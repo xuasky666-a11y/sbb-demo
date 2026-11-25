@@ -6,6 +6,10 @@
   --nav-shadow: 0 10px 30px rgba(0, 5, 20, 0.45), inset 0 1px 0 rgba(160, 200, 255, 0.2);
   --nav-blur: blur(16px);
   --nav-hover-bg: rgba(30, 55, 105, 0.6);
+  --dock-fg: rgba(230, 240, 255, 0.92);
+  --dock-exit: #ffffff;
+  --dock-sep: rgba(140, 180, 255, 0.35);
+  --dock-hover: rgba(90, 140, 230, 0.2);
 }
 
 .deep {
@@ -61,16 +65,7 @@
   padding: 48px 130px 0;
 }
 .deep-brand { display: flex; align-items: center; gap: 16px; }
-.deep-badge {
-  width: 52px; height: 52px;
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(160deg, #4da3ff, #1f6fe0);
-  box-shadow: 0 6px 18px rgba(40, 120, 230, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-}
-.deep-brand-text { display: flex; flex-direction: column; gap: 3px; }
-.deep-brand-text strong { font-size: 27px; font-weight: 600; letter-spacing: 0.08em; }
-.deep-brand-text em { font-style: normal; font-size: 13px; letter-spacing: 0.16em; color: rgba(180, 205, 245, 0.55); }
+.deep-logo { height: 58px; width: auto; display: block; }
 .deep-cast {
   display: flex; align-items: center; gap: 14px;
   padding: 13px 26px;
@@ -128,7 +123,7 @@
 /* --- 底部 Dock --- */
 .deep-dock-wrap { margin-top: auto; margin-bottom: 50px; }
 .deep-dock {
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center;
   padding: 12px 20px;
   border-radius: 26px;
   background: rgba(16, 32, 68, 0.55);
@@ -136,23 +131,4 @@
   box-shadow: inset 0 1px 0 rgba(160, 200, 255, 0.2), 0 16px 40px rgba(0, 5, 20, 0.45);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-}
-.deep-tool {
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  padding: 10px 24px;
-  border-radius: 18px;
-  font-size: 14px; letter-spacing: 0.1em; color: rgba(220, 235, 255, 0.9);
-  transition: background 0.2s, transform 0.2s var(--ease-out-soft);
-}
-.deep-tool:hover { background: rgba(90, 140, 230, 0.2); }
-.deep-tool:active { transform: scale(0.92); }
-.deep-tool.t-pen { color: #7cc5ff; }
-.deep-tool.t-board { color: #c9a6ff; }
-.deep-tool.t-interact { color: #6fe3c1; }
-.deep-tool.t-more { color: rgba(220, 235, 255, 0.9); }
-.deep-tool.exit { color: #ff9d8a; }
-.deep-tool.exit:hover { background: rgba(230, 80, 60, 0.22); }
-.deep-sep {
-  width: 1px; height: 48px; margin: 0 10px;
-  background: linear-gradient(180deg, transparent, rgba(140, 180, 255, 0.4), transparent);
 }

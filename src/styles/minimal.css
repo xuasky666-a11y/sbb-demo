@@ -6,6 +6,10 @@
   --nav-shadow: 0 6px 20px rgba(23, 24, 26, 0.08);
   --nav-blur: blur(10px);
   --nav-hover-bg: #ffffff;
+  --dock-fg: #55534c;
+  --dock-exit: #d43a24;
+  --dock-sep: rgba(23, 24, 26, 0.18);
+  --dock-hover: rgba(23, 24, 26, 0.05);
 }
 
 .mini {
@@ -34,8 +38,7 @@
 .mini-brand { display: flex; align-items: center; gap: 14px; }
 .mini-mark {
   width: 34px; height: 34px;
-  display: flex; align-items: center; justify-content: center;
-  background: #17181a; color: #f7f6f2;
+  display: block; border-radius: 8px;
 }
 .mini-brand-name { font-size: 20px; font-weight: 600; letter-spacing: 0.3em; }
 .mini-ver { font-size: 12px; color: #9a9890; letter-spacing: 0.14em; margin-left: 4px; }
@@ -98,20 +101,8 @@
 }
 .mini-app:hover .mini-underline { width: 100%; }
 
-/* --- 底部菜单 --- */
+/* --- 底部菜单（减法·统一快捷栏） --- */
 .mini-dock {
   margin-top: auto; margin-bottom: 66px;
-  display: flex; align-items: center; gap: 44px;
+  display: flex;
 }
-.mini-tool {
-  display: flex; align-items: center; gap: 9px;
-  font-size: 16px; letter-spacing: 0.22em; color: #55534c;
-  padding: 8px 2px;
-  border-bottom: 1px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
-}
-.mini-tool:hover { color: #17181a; border-bottom-color: #17181a; }
-.mini-tool:active { transform: scale(0.96); }
-.mini-tool.exit { color: #d43a24; }
-.mini-tool.exit:hover { border-bottom-color: #d43a24; }
-.mini-dot-sep { width: 4px; height: 4px; border-radius: 50%; background: #c9c7bf; }

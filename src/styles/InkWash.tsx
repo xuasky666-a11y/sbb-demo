@@ -1,6 +1,8 @@
-import { Icon } from '@/components/Icon'
+import { CoreIcon } from '@/components/CoreIcon'
+import { QuickDock } from '@/components/QuickDock'
+import brandMark from '@/assets/brand-mark.png'
 import { useClock } from '@/lib/useClock'
-import { CORE_APPS, QUICK_TOOLS, type ScreenProps } from './types'
+import { CORE_APPS, type ScreenProps } from './types'
 import './inkwash.css'
 
 /** 风格七 · 国风水墨：宣纸底 + 淡墨远山 + 朱红印章 + 团扇应用 */
@@ -36,7 +38,7 @@ export function InkWash({ onAction }: ScreenProps) {
 
       <header className="ink-header">
         <button className="ink-brand tap" onClick={() => onAction('超级黑板')}>
-          <span className="ink-mark"><Icon name="feather" size={26} strokeWidth={1.6} /></span>
+          <img className="ink-mark" src={brandMark} alt="" draggable={false} />
           <span className="ink-brand-text">
             <span className="ink-brand-name">超级黑板</span>
             <span className="ink-ver">V4.4.2.3</span>
@@ -59,7 +61,7 @@ export function InkWash({ onAction }: ScreenProps) {
         {CORE_APPS.map(app => (
           <button key={app.key} className="ink-app tap" onClick={() => onAction(app.label)}>
             <span className="ink-fan">
-              <Icon name={app.key} size={56} strokeWidth={1.3} />
+              <CoreIcon name={app.key} size={104} />
             </span>
             <span className="ink-app-label">{app.label}</span>
           </button>
@@ -70,16 +72,7 @@ export function InkWash({ onAction }: ScreenProps) {
         <div className="ink-scroll">
           <span className="ink-rod" />
           <div className="ink-scroll-paper">
-            {QUICK_TOOLS.map(tool => (
-              <button key={tool.key} className="ink-tool tap" onClick={() => onAction(tool.label)}>
-                <Icon name={tool.key} size={26} strokeWidth={1.5} />
-                <span>{tool.label}</span>
-              </button>
-            ))}
-            <span className="ink-tool-sep" />
-            <button className="ink-tool exit tap" onClick={() => onAction('下课')}>
-              <span className="ink-exit-seal">下课</span>
-            </button>
+            <QuickDock onAction={onAction} />
           </div>
           <span className="ink-rod" />
         </div>

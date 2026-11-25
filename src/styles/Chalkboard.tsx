@@ -1,6 +1,8 @@
-import { Icon } from '@/components/Icon'
+import { CoreIcon } from '@/components/CoreIcon'
+import { QuickDock } from '@/components/QuickDock'
+import brandLogoWhite from '@/assets/brand-logo-white.png'
 import { useClock } from '@/lib/useClock'
-import { CORE_APPS, QUICK_TOOLS, type ScreenProps } from './types'
+import { CORE_APPS, type ScreenProps } from './types'
 import './chalkboard.css'
 
 /** 风格四 · 超写实黑板：木框、粉笔字、粉笔槽与板擦 */
@@ -25,11 +27,7 @@ export function Chalkboard({ onAction }: ScreenProps) {
 
         <header className="chalk-header">
           <div className="chalk-brand">
-            <Icon name="feather" size={38} strokeWidth={1.8} className="chalk-rough" />
-            <span className="chalk-brand-text">
-              <strong>超级黑板</strong>
-              <em>V4.4.2.3</em>
-            </span>
+            <img className="chalk-logo" src={brandLogoWhite} alt="超级黑板 V4.4.2.3" />
           </div>
           <button className="chalk-cast tap chalk-rough" onClick={() => onAction('投屏码')}>
             <span>投屏码</span>
@@ -49,7 +47,7 @@ export function Chalkboard({ onAction }: ScreenProps) {
           {CORE_APPS.map((app, i) => (
             <button key={app.key} className={`chalk-app tap r${i}`} onClick={() => onAction(app.label)}>
               <span className="chalk-app-box chalk-rough">
-                <Icon name={app.key} size={58} strokeWidth={1.5} />
+                <CoreIcon name={app.key} size={92} className="chalk-core" />
               </span>
               <span className="chalk-app-label">{app.label}</span>
             </button>
@@ -67,17 +65,7 @@ export function Chalkboard({ onAction }: ScreenProps) {
 
         <footer className="chalk-dock-wrap">
           <div className="chalk-dock chalk-rough">
-            {QUICK_TOOLS.map(tool => (
-              <button key={tool.key} className="chalk-tool tap" onClick={() => onAction(tool.label)}>
-                <Icon name={tool.key} size={26} strokeWidth={1.7} />
-                <span>{tool.label}</span>
-              </button>
-            ))}
-            <span className="chalk-sep" />
-            <button className="chalk-tool exit tap" onClick={() => onAction('下课')}>
-              <Icon name="exit" size={26} strokeWidth={1.7} />
-              <span>下课</span>
-            </button>
+            <QuickDock onAction={onAction} />
           </div>
         </footer>
       </div>

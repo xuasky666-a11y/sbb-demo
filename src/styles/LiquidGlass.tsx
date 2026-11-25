@@ -1,6 +1,8 @@
-import { Icon } from '@/components/Icon'
+import { CoreIcon } from '@/components/CoreIcon'
+import { QuickDock } from '@/components/QuickDock'
+import brandMark from '@/assets/brand-mark.png'
 import { useClock } from '@/lib/useClock'
-import { CORE_APPS, QUICK_TOOLS, type ScreenProps } from './types'
+import { CORE_APPS, type ScreenProps } from './types'
 import './liquidglass.css'
 
 /** 风格二 · 苹果流体玻璃：亮色丝绸光斑 + 高透白玻璃面板 */
@@ -16,7 +18,7 @@ export function LiquidGlass({ onAction }: ScreenProps) {
 
       <header className="glass-header">
         <button className="glass-pill glass-brand tap" onClick={() => onAction('超级黑板')}>
-          <span className="glass-mark"><Icon name="feather" size={24} strokeWidth={2} /></span>
+          <img className="glass-mark" src={brandMark} alt="超级黑板" />
           <span className="glass-brand-name">超级黑板</span>
           <span className="glass-ver">V4.4.2.3</span>
         </button>
@@ -34,7 +36,7 @@ export function LiquidGlass({ onAction }: ScreenProps) {
       <section className="glass-apps">
         {CORE_APPS.map(app => (
           <button key={app.key} className="glass-app tap" onClick={() => onAction(app.label)}>
-            <span className="glass-app-icon"><Icon name={app.key} size={58} strokeWidth={1.35} /></span>
+            <span className="glass-app-icon"><CoreIcon name={app.key} size={100} /></span>
             <span className="glass-app-label">{app.label}</span>
           </button>
         ))}
@@ -42,17 +44,7 @@ export function LiquidGlass({ onAction }: ScreenProps) {
 
       <footer className="glass-dock-wrap">
         <div className="glass-dock">
-          {QUICK_TOOLS.map(tool => (
-            <button key={tool.key} className="glass-dock-item tap" onClick={() => onAction(tool.label)}>
-              <Icon name={tool.key} size={28} strokeWidth={1.6} />
-              <span>{tool.label}</span>
-            </button>
-          ))}
-          <span className="glass-dock-sep" />
-          <button className="glass-dock-item exit tap" onClick={() => onAction('下课')}>
-            <Icon name="exit" size={28} strokeWidth={1.6} />
-            <span>下课</span>
-          </button>
+          <QuickDock onAction={onAction} />
         </div>
       </footer>
     </div>

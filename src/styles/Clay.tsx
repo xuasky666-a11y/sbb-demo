@@ -1,6 +1,8 @@
-import { Icon } from '@/components/Icon'
+import { CoreIcon } from '@/components/CoreIcon'
+import { QuickDock } from '@/components/QuickDock'
+import brandMark from '@/assets/brand-mark.png'
 import { useClock } from '@/lib/useClock'
-import { CORE_APPS, QUICK_TOOLS, type ScreenProps } from './types'
+import { CORE_APPS, type ScreenProps } from './types'
 import './clay.css'
 
 /** 风格九 · 黏土质感：奶油底色 + 软糖立体卡片 + 圆润厚描边 */
@@ -15,7 +17,7 @@ export function Clay({ onAction }: ScreenProps) {
 
       <header className="clay-header">
         <button className="clay-pill clay-brand tap" onClick={() => onAction('超级黑板')}>
-          <span className="clay-mark"><Icon name="feather" size={24} strokeWidth={2.4} /></span>
+          <img className="clay-mark" src={brandMark} alt="" draggable={false} />
           <span className="clay-brand-name">超级黑板</span>
           <span className="clay-ver">V4.4.2.3</span>
         </button>
@@ -37,7 +39,7 @@ export function Clay({ onAction }: ScreenProps) {
       <section className="clay-apps">
         {CORE_APPS.map(app => (
           <button key={app.key} className={`clay-app ${app.key} tap`} onClick={() => onAction(app.label)}>
-            <span className="clay-app-icon"><Icon name={app.key} size={58} strokeWidth={2.3} /></span>
+            <span className="clay-app-icon"><CoreIcon name={app.key} size={100} /></span>
             <span className="clay-app-label">{app.label}</span>
           </button>
         ))}
@@ -45,17 +47,7 @@ export function Clay({ onAction }: ScreenProps) {
 
       <footer className="clay-dock-wrap">
         <div className="clay-dock">
-          {QUICK_TOOLS.map(tool => (
-            <button key={tool.key} className="clay-dock-item tap" onClick={() => onAction(tool.label)}>
-              <span className="clay-dock-icon"><Icon name={tool.key} size={26} strokeWidth={2.2} /></span>
-              <span>{tool.label}</span>
-            </button>
-          ))}
-          <span className="clay-dock-sep" />
-          <button className="clay-dock-item exit tap" onClick={() => onAction('下课')}>
-            <span className="clay-dock-icon"><Icon name="exit" size={26} strokeWidth={2.2} /></span>
-            <span>下课</span>
-          </button>
+          <QuickDock onAction={onAction} />
         </div>
       </footer>
     </div>

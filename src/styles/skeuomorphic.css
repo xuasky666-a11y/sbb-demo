@@ -6,6 +6,10 @@
   --nav-shadow: 0 10px 24px rgba(88, 80, 64, 0.28), inset 0 -2px 4px rgba(120, 110, 90, 0.18);
   --nav-blur: none;
   --nav-hover-bg: linear-gradient(180deg, #ffffff, #eae6dd);
+  --dock-fg: #f2f0ea;
+  --dock-exit: #ffffff;
+  --dock-sep: rgba(255, 255, 255, 0.22);
+  --dock-hover: rgba(255, 255, 255, 0.12);
 }
 
 .skeu {
@@ -38,12 +42,9 @@
 .skeu-badge {
   width: 58px; height: 58px;
   border-radius: 15px;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff;
-  background: linear-gradient(180deg, #6db5ff 0%, #2f7fe0 55%, #1f66c4 100%);
+  display: block;
   box-shadow:
     inset 0 2px 3px rgba(255, 255, 255, 0.55),
-    inset 0 -3px 5px rgba(10, 60, 130, 0.45),
     0 8px 16px rgba(40, 100, 190, 0.35);
 }
 .skeu-brand-text { display: flex; flex-direction: column; gap: 3px; }
@@ -171,47 +172,15 @@
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
-/* --- 底部工具栏 --- */
+/* --- 底部工具栏（深色压印金属·白图标） --- */
 .skeu-dock-wrap { margin-top: auto; margin-bottom: 52px; }
 .skeu-dock {
-  display: flex; align-items: center; gap: 8px;
-  padding: 14px 20px;
+  display: flex; align-items: center;
+  padding: 12px 18px;
   border-radius: 24px;
-  background: linear-gradient(180deg, #f6f4ef, #ded9cd);
+  background: linear-gradient(180deg, #4a4e55 0%, #33363c 55%, #26282c 100%);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -2px 5px rgba(125, 115, 90, 0.2),
-    0 14px 30px rgba(95, 85, 60, 0.28);
+    inset 0 2px 2px rgba(255, 255, 255, 0.18),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.5),
+    0 14px 30px rgba(70, 60, 40, 0.35);
 }
-.skeu-key {
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  padding: 10px 22px;
-  border-radius: 16px;
-  font-size: 14px; letter-spacing: 0.08em; color: #6b665b;
-  transition: background 0.2s, transform 0.2s var(--ease-out-soft);
-}
-.skeu-key:hover { background: rgba(255, 255, 255, 0.65); }
-.skeu-key:active { transform: scale(0.93); }
-.skeu-key.key-pen { color: #2f7fe0; }
-.skeu-key.key-board { color: #8b5cf6; }
-.skeu-key.key-interact { color: #0fa38a; }
-.skeu-key.key-more { color: #6b665b; }
-.skeu-key span { color: #6b665b; }
-.skeu-divider {
-  width: 2px; height: 52px; margin: 0 10px;
-  background: linear-gradient(180deg, transparent, rgba(120, 110, 85, 0.35), transparent);
-  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.8);
-}
-.skeu-exit-cap {
-  width: 46px; height: 46px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff;
-  background: linear-gradient(180deg, #ff8a70 0%, #e8503a 60%, #cf3a26 100%);
-  box-shadow:
-    inset 0 2px 3px rgba(255, 255, 255, 0.5),
-    inset 0 -3px 5px rgba(140, 20, 5, 0.5),
-    0 6px 12px rgba(200, 60, 35, 0.4);
-}
-.skeu-key.key-exit { gap: 5px; }
-.skeu-key.key-exit > span:last-child { color: #c24a34; font-weight: 600; }

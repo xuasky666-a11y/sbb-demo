@@ -6,6 +6,10 @@
   --nav-shadow: 0 10px 28px rgba(90, 100, 140, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   --nav-blur: blur(24px) saturate(170%);
   --nav-hover-bg: rgba(255, 255, 255, 0.6);
+  --dock-fg: #2a3348;
+  --dock-exit: #d4491f;
+  --dock-sep: rgba(60, 70, 100, 0.25);
+  --dock-hover: rgba(255, 255, 255, 0.55);
 }
 
 .glass {
@@ -81,11 +85,9 @@
 }
 .glass-brand { gap: 13px; padding: 12px 24px 12px 14px; }
 .glass-mark {
-  width: 42px; height: 42px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff;
-  background: linear-gradient(160deg, #6fb7ff, #3d7fe8);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 4px 10px rgba(70, 130, 220, 0.35);
+  width: 42px; height: 42px; border-radius: 12px;
+  display: block;
+  box-shadow: 0 4px 10px rgba(70, 130, 220, 0.35);
 }
 .glass-brand-name { font-size: 22px; font-weight: 600; letter-spacing: 0.08em; }
 .glass-ver { font-size: 13px; opacity: 0.5; letter-spacing: 0.1em; }
@@ -145,14 +147,14 @@
     0 26px 54px rgba(90, 100, 140, 0.26);
 }
 .glass-app:active { transform: scale(0.96); }
-.glass-app-icon { color: #2a3348; }
+.glass-app-icon { display: flex; }
 .glass-app-label { font-size: 21px; font-weight: 600; letter-spacing: 0.14em; }
 
 /* --- 底部 Dock --- */
 .glass-dock-wrap { margin-top: auto; margin-bottom: 48px; }
 .glass-dock {
-  display: flex; align-items: center; gap: 6px;
-  padding: 14px 22px;
+  display: flex; align-items: center;
+  padding: 12px 20px;
   border-radius: 34px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.26));
   border: 1.5px solid rgba(255, 255, 255, 0.78);
@@ -162,20 +164,4 @@
     0 20px 46px rgba(90, 100, 140, 0.22);
   backdrop-filter: blur(32px) saturate(175%);
   -webkit-backdrop-filter: blur(32px) saturate(175%);
-}
-.glass-dock-item {
-  display: flex; flex-direction: column; align-items: center; gap: 7px;
-  padding: 12px 26px;
-  border-radius: 24px;
-  font-size: 14px; letter-spacing: 0.1em;
-  color: #2a3348;
-  transition: background 0.22s, transform 0.22s var(--ease-out-soft);
-}
-.glass-dock-item:hover { background: rgba(255, 255, 255, 0.55); }
-.glass-dock-item:active { transform: scale(0.92); }
-.glass-dock-item.exit { color: #d4491f; }
-.glass-dock-item.exit:hover { background: rgba(255, 120, 90, 0.2); }
-.glass-dock-sep {
-  width: 1px; height: 52px; margin: 0 12px;
-  background: linear-gradient(180deg, transparent, rgba(60, 70, 100, 0.25), transparent);
 }

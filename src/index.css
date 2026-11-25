@@ -19,6 +19,12 @@
   --nav-blur: blur(18px);
   --nav-hover-bg: rgba(20, 24, 32, 0.55);
 
+  /* 底部快捷栏令牌（各风格覆盖；深色底用白色图标） */
+  --dock-fg: rgba(255, 255, 255, 0.92);
+  --dock-exit: #ffffff;
+  --dock-sep: rgba(255, 255, 255, 0.25);
+  --dock-hover: rgba(255, 255, 255, 0.12);
+
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
 }
@@ -161,4 +167,58 @@ button {
   inset: 0;
   background-image: var(--noise);
   pointer-events: none;
+}
+
+/* ========== 底部快捷栏（减法版·全风格统一） ========== */
+/* 固定 item 高度 + justify-end：图标区/文字区高度恒定 → 文字必然底对齐 */
+.quick-dock {
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  color: var(--dock-fg);
+}
+.qd-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  height: 62px;
+  padding: 0 24px;
+  border-radius: 14px;
+  color: var(--dock-fg);
+  transition: background 0.2s, transform 0.2s var(--ease-out-soft);
+}
+.qd-icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  background: currentColor;
+  opacity: 0.82;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+.qd-label {
+  height: 12px;
+  line-height: 12px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-indent: 0.14em;
+  opacity: 0.6;
+}
+.qd-item:hover { background: var(--dock-hover); }
+.qd-item:active { transform: scale(0.94); }
+.qd-item.exit { color: var(--dock-exit); }
+.qd-item.exit .qd-icon { opacity: 1; }
+.qd-item.exit .qd-label { opacity: 0.9; }
+.qd-sep {
+  align-self: center;
+  width: 1px;
+  height: 38px;
+  margin: 0 12px;
+  background: var(--dock-sep);
 }

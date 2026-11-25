@@ -1,7 +1,8 @@
-import { Icon } from '@/components/Icon'
-import { GlossyIcon } from '@/components/GlossyIcon'
+import { CoreIcon } from '@/components/CoreIcon'
+import { QuickDock } from '@/components/QuickDock'
+import brandMark from '@/assets/brand-mark.png'
 import { useClock } from '@/lib/useClock'
-import { CORE_APPS, QUICK_TOOLS, type ScreenProps } from './types'
+import { CORE_APPS, type ScreenProps } from './types'
 import './skeuomorphic.css'
 
 /** 风格一 · 拟物质感：翻页钟、压印金属、糖果高光图标 */
@@ -14,7 +15,7 @@ export function Skeuomorphic({ onAction }: ScreenProps) {
 
       <header className="skeu-header">
         <div className="skeu-brand">
-          <span className="skeu-badge"><Icon name="feather" size={30} strokeWidth={2} /></span>
+          <img className="skeu-badge" src={brandMark} alt="超级黑板" />
           <span className="skeu-brand-text">
             <strong>超级黑板</strong>
             <em>V4.4.2.3</em>
@@ -39,7 +40,7 @@ export function Skeuomorphic({ onAction }: ScreenProps) {
         {CORE_APPS.map(app => (
           <button key={app.key} className="skeu-app tap" onClick={() => onAction(app.label)}>
             <span className="skeu-tile">
-              <GlossyIcon name={app.key} size={108} />
+              <CoreIcon name={app.key} size={112} />
             </span>
             <span className="skeu-app-label">{app.label}</span>
           </button>
@@ -48,17 +49,7 @@ export function Skeuomorphic({ onAction }: ScreenProps) {
 
       <footer className="skeu-dock-wrap">
         <div className="skeu-dock">
-          {QUICK_TOOLS.map(tool => (
-            <button key={tool.key} className={`skeu-key tap key-${tool.key}`} onClick={() => onAction(tool.label)}>
-              <Icon name={tool.key} size={27} strokeWidth={1.9} />
-              <span>{tool.label}</span>
-            </button>
-          ))}
-          <span className="skeu-divider" />
-          <button className="skeu-key key-exit tap" onClick={() => onAction('下课')}>
-            <span className="skeu-exit-cap"><Icon name="exit" size={24} strokeWidth={2} /></span>
-            <span>下课</span>
-          </button>
+          <QuickDock onAction={onAction} />
         </div>
       </footer>
     </div>

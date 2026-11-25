@@ -68,7 +68,7 @@ export function Pixel({ onAction }: ScreenProps) {
       <section className="px-apps">
         {CORE_APPS.map(app => (
           <button key={app.key} className="px-app tap" onClick={() => onAction(app.label)}>
-            <PixelIcon name={app.key} size={82} />
+            <PixelIcon name={app.key} size={94} />
             <span className="px-app-label">{app.label}</span>
           </button>
         ))}
@@ -78,13 +78,13 @@ export function Pixel({ onAction }: ScreenProps) {
         <div className="px-hotbar">
           {QUICK_TOOLS.map(tool => (
             <button key={tool.key} className="px-slot tap" onClick={() => onAction(tool.label)}>
-              <PixelIcon name={tool.key} size={44} />
+              <PixelIcon name={tool.key} size={36} />
               <span>{tool.label}</span>
             </button>
           ))}
           <span className="px-hotbar-gap" />
           <button className="px-slot exit tap" onClick={() => onAction('下课')}>
-            <PixelIcon name="exit" size={44} />
+            <PixelIcon name="exit" size={36} />
             <span>下课</span>
           </button>
         </div>

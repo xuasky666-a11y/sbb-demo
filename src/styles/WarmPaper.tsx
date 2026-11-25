@@ -1,6 +1,8 @@
-import { Icon } from '@/components/Icon'
+import { CoreIcon } from '@/components/CoreIcon'
+import { QuickDock } from '@/components/QuickDock'
+import brandMark from '@/assets/brand-mark.png'
 import { useClock } from '@/lib/useClock'
-import { CORE_APPS, QUICK_TOOLS, type ScreenProps } from './types'
+import { CORE_APPS, type ScreenProps } from './types'
 import './warmpaper.css'
 
 /** 风格六 · 暖木纸感：米纸底、贴纸卡片、票据投屏码 */
@@ -14,7 +16,7 @@ export function WarmPaper({ onAction }: ScreenProps) {
 
       <header className="warm-header">
         <div className="warm-brand">
-          <span className="warm-badge"><Icon name="feather" size={26} strokeWidth={2.1} /></span>
+          <img className="warm-badge" src={brandMark} alt="超级黑板" />
           <span className="warm-brand-text">
             <strong>超级黑板</strong>
             <em>V4.4.2.3</em>
@@ -42,7 +44,7 @@ export function WarmPaper({ onAction }: ScreenProps) {
         {CORE_APPS.map((app, i) => (
           <button key={app.key} className={`warm-app tap w${i}`} onClick={() => onAction(app.label)}>
             <span className={`warm-app-icon c-${app.key}`}>
-              <Icon name={app.key} size={46} strokeWidth={1.7} />
+              <CoreIcon name={app.key} size={84} />
             </span>
             <span className="warm-app-label">{app.label}</span>
           </button>
@@ -51,17 +53,7 @@ export function WarmPaper({ onAction }: ScreenProps) {
 
       <footer className="warm-dock-wrap">
         <div className="warm-dock">
-          {QUICK_TOOLS.map(tool => (
-            <button key={tool.key} className={`warm-tool tap c-${tool.key}`} onClick={() => onAction(tool.label)}>
-              <Icon name={tool.key} size={24} strokeWidth={1.9} />
-              <span>{tool.label}</span>
-            </button>
-          ))}
-          <span className="warm-sep" />
-          <button className="warm-tool exit tap" onClick={() => onAction('下课')}>
-            <Icon name="exit" size={24} strokeWidth={1.9} />
-            <span>下课</span>
-          </button>
+          <QuickDock onAction={onAction} />
         </div>
       </footer>
     </div>
