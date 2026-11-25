@@ -1,0 +1,161 @@
+/* ===== 风格六 · 暖木纸感 ===== */
+.theme-warm {
+  --nav-bg: #fffdf7;
+  --nav-fg: #4a3a28;
+  --nav-border: #4a3a28;
+  --nav-shadow: 4px 4px 0 rgba(74, 58, 40, 0.85);
+  --nav-blur: none;
+  --nav-hover-bg: #fff3dd;
+}
+
+.warm {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #4a3a28;
+  background:
+    radial-gradient(1400px 800px at 50% 20%, #fdf6e8 0%, #f6ecd8 60%, #efe2c8 100%);
+}
+.warm-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(120, 90, 50, 0.14) 1.4px, transparent 1.4px);
+  background-size: 34px 34px;
+  pointer-events: none;
+}
+
+/* --- 顶栏 --- */
+.warm-header {
+  width: 100%;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 50px 130px 0;
+}
+.warm-brand { display: flex; align-items: center; gap: 16px; }
+.warm-badge {
+  width: 54px; height: 54px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fffdf7;
+  background: #e8703a;
+  border: 2.5px solid #4a3a28;
+  box-shadow: 3px 3px 0 rgba(74, 58, 40, 0.85);
+  transform: rotate(-3deg);
+}
+.warm-brand-text { display: flex; flex-direction: column; gap: 2px; }
+.warm-brand-text strong {
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-size: 30px; font-weight: 700; letter-spacing: 0.1em;
+}
+.warm-brand-text em { font-style: normal; font-size: 13px; letter-spacing: 0.16em; color: #a08a6a; }
+
+/* 票据投屏码 */
+.warm-ticket {
+  position: relative;
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 30px;
+  background: #fffdf7;
+  border: 2.5px dashed #b08a54;
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 rgba(176, 138, 84, 0.4);
+  font-size: 16px; letter-spacing: 0.14em; color: #8a6f4c;
+  transition: transform 0.2s var(--ease-out-soft);
+}
+.warm-ticket strong {
+  font-family: "SF Mono", "Menlo", monospace;
+  font-size: 26px; font-weight: 700; letter-spacing: 0.24em; color: #4a3a28;
+}
+.warm-ticket .hole {
+  position: absolute; top: 50%;
+  width: 16px; height: 16px; margin-top: -8px;
+  border-radius: 50%;
+  background: #f6ecd8;
+  border: 2.5px dashed #b08a54;
+}
+.warm-ticket .hole.left { left: -10px; }
+.warm-ticket .hole.right { right: -10px; }
+.warm-ticket:hover { transform: translateY(-3px) rotate(-0.5deg); }
+
+/* --- 时钟 --- */
+.warm-clock { margin-top: 56px; display: flex; flex-direction: column; align-items: center; }
+.warm-time {
+  font-family: "SF Pro Rounded", "SF Pro Display", "Helvetica Neue", system-ui;
+  font-size: 172px; font-weight: 800; line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: #4a3a28;
+  text-shadow: 5px 5px 0 rgba(232, 112, 58, 0.22);
+}
+.warm-time span { color: #e8703a; }
+.warm-date {
+  margin-top: 28px;
+  display: flex; align-items: center; gap: 12px;
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-size: 25px; letter-spacing: 0.24em; color: #8a6f4c;
+}
+.warm-date svg { color: #e8a13a; }
+
+/* --- 核心应用（贴纸卡片） --- */
+.warm-apps { margin-top: 68px; display: flex; gap: 72px; }
+.warm-app {
+  width: 190px;
+  padding: 30px 0 26px;
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+  background: #fffdf7;
+  border: 2.5px solid #4a3a28;
+  border-radius: 24px;
+  box-shadow: 5px 5px 0 rgba(74, 58, 40, 0.85);
+  transition: transform 0.22s var(--ease-out-soft), box-shadow 0.22s;
+}
+.warm-app.w0 { transform: rotate(-1.2deg); }
+.warm-app.w1 { transform: rotate(0.8deg); }
+.warm-app.w2 { transform: rotate(-0.6deg); }
+.warm-app.w3 { transform: rotate(1.1deg); }
+.warm-app:hover { transform: translateY(-6px) rotate(0deg); box-shadow: 8px 9px 0 rgba(74, 58, 40, 0.85); }
+.warm-app:active { transform: translateY(1px) scale(0.97); box-shadow: 2px 2px 0 rgba(74, 58, 40, 0.85); }
+.warm-app-icon {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 2.5px solid #4a3a28;
+}
+.warm-app-icon.c-courseware { background: #ffd9a8; color: #b05a1e; }
+.warm-app-icon.c-board { background: #d9ecff; color: #2b6cb0; }
+.warm-app-icon.c-cast { background: #ffe0d1; color: #d4491f; }
+.warm-app-icon.c-live { background: #d8f2e3; color: #1f8a5d; }
+.warm-app-label {
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-size: 24px; font-weight: 700; letter-spacing: 0.18em; text-indent: 0.18em;
+}
+
+/* --- 底部菜单 --- */
+.warm-dock-wrap { margin-top: auto; margin-bottom: 52px; }
+.warm-dock {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 22px;
+  background: #fffdf7;
+  border: 2.5px solid #4a3a28;
+  border-radius: 22px;
+  box-shadow: 5px 5px 0 rgba(74, 58, 40, 0.85);
+}
+.warm-tool {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 10px 24px;
+  border-radius: 16px;
+  font-size: 15px; letter-spacing: 0.1em; color: #6b573c;
+  transition: background 0.2s, transform 0.2s var(--ease-out-soft);
+}
+.warm-tool:hover { background: #f6ecd8; }
+.warm-tool:active { transform: scale(0.92); }
+.warm-tool.c-pen { color: #2b6cb0; }
+.warm-tool.c-board { color: #7a4fc9; }
+.warm-tool.c-interact { color: #1f8a5d; }
+.warm-tool.c-more { color: #6b573c; }
+.warm-tool.exit { color: #d4491f; font-weight: 700; }
+.warm-tool.exit:hover { background: #ffe0d1; }
+.warm-sep {
+  width: 2.5px; height: 48px; margin: 0 10px;
+  border-radius: 2px;
+  background: rgba(74, 58, 40, 0.25);
+}

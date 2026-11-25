@@ -1,0 +1,117 @@
+/* ===== 风格三 · 极简 ===== */
+.theme-mini {
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --nav-fg: #17181a;
+  --nav-border: rgba(23, 24, 26, 0.16);
+  --nav-shadow: 0 6px 20px rgba(23, 24, 26, 0.08);
+  --nav-blur: blur(10px);
+  --nav-hover-bg: #ffffff;
+}
+
+.mini {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #17181a;
+  background: #f7f6f2;
+}
+
+/* 角标裁切线 */
+.mini-crop { position: absolute; width: 26px; height: 26px; opacity: 0.3; }
+.mini-crop.tl { left: 44px; top: 44px; border-left: 1px solid #17181a; border-top: 1px solid #17181a; }
+.mini-crop.tr { right: 44px; top: 44px; border-right: 1px solid #17181a; border-top: 1px solid #17181a; }
+.mini-crop.bl { left: 44px; bottom: 44px; border-left: 1px solid #17181a; border-bottom: 1px solid #17181a; }
+.mini-crop.br { right: 44px; bottom: 44px; border-right: 1px solid #17181a; border-bottom: 1px solid #17181a; }
+
+/* --- 顶栏 --- */
+.mini-header {
+  width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 64px 140px 0;
+}
+.mini-brand { display: flex; align-items: center; gap: 14px; }
+.mini-mark {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  background: #17181a; color: #f7f6f2;
+}
+.mini-brand-name { font-size: 20px; font-weight: 600; letter-spacing: 0.3em; }
+.mini-ver { font-size: 12px; color: #9a9890; letter-spacing: 0.14em; margin-left: 4px; }
+.mini-cast {
+  display: flex; align-items: baseline; gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid #17181a;
+  font-size: 14px; letter-spacing: 0.2em; color: #6d6b64;
+}
+.mini-cast strong {
+  font-family: "SF Mono", "Menlo", monospace;
+  font-size: 22px; font-weight: 600; letter-spacing: 0.3em; color: #17181a;
+}
+.mini-cast:hover strong { color: #2440ff; }
+
+/* --- 时钟 --- */
+.mini-clock { margin-top: 92px; display: flex; flex-direction: column; align-items: center; }
+.mini-time {
+  font-family: "SF Pro Display", "Helvetica Neue", system-ui;
+  font-size: 218px; font-weight: 100; line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+.mini-time span { color: #c9c7bf; margin: 0 4px; }
+.mini-date {
+  margin-top: 34px;
+  font-size: 17px; letter-spacing: 0.5em; color: #8b897f;
+}
+
+/* --- 核心应用 --- */
+.mini-apps {
+  margin-top: 96px;
+  display: flex;
+  border-top: 1px solid rgba(23, 24, 26, 0.18);
+  border-bottom: 1px solid rgba(23, 24, 26, 0.18);
+}
+.mini-app {
+  position: relative;
+  width: 280px;
+  padding: 40px 0 44px;
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+  color: #17181a;
+  transition: background 0.25s;
+}
+.mini-app + .mini-app { border-left: 1px solid rgba(23, 24, 26, 0.18); }
+.mini-app:hover { background: rgba(255, 255, 255, 0.75); }
+.mini-app:active { background: rgba(23, 24, 26, 0.05); }
+.mini-index {
+  font-family: "SF Mono", "Menlo", monospace;
+  font-size: 12px; letter-spacing: 0.2em; color: #b3b1a8;
+}
+.mini-app:hover .mini-index { color: #2440ff; }
+.mini-app-label { font-size: 19px; font-weight: 500; letter-spacing: 0.34em; text-indent: 0.34em; }
+.mini-underline {
+  position: absolute; left: 50%; bottom: -1px;
+  width: 0; height: 2px;
+  background: #2440ff;
+  transform: translateX(-50%);
+  transition: width 0.3s var(--ease-out-soft);
+}
+.mini-app:hover .mini-underline { width: 100%; }
+
+/* --- 底部菜单 --- */
+.mini-dock {
+  margin-top: auto; margin-bottom: 66px;
+  display: flex; align-items: center; gap: 44px;
+}
+.mini-tool {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 16px; letter-spacing: 0.22em; color: #55534c;
+  padding: 8px 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.mini-tool:hover { color: #17181a; border-bottom-color: #17181a; }
+.mini-tool:active { transform: scale(0.96); }
+.mini-tool.exit { color: #d43a24; }
+.mini-tool.exit:hover { border-bottom-color: #d43a24; }
+.mini-dot-sep { width: 4px; height: 4px; border-radius: 50%; background: #c9c7bf; }
