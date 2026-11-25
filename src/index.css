@@ -125,14 +125,6 @@ button {
   user-select: none;
 }
 .style-pill .num { opacity: 0.65; font-variant-numeric: tabular-nums; }
-.style-pill .dots { display: flex; gap: 7px; align-items: center; }
-.style-pill .dot {
-  width: 7px; height: 7px; border-radius: 999px;
-  background: currentColor; opacity: 0.3;
-  cursor: pointer; transition: all 0.25s;
-}
-.style-pill .dot.on { opacity: 1; width: 20px; }
-.style-pill .hint { opacity: 0.45; font-size: 12px; }
 
 .demo-toast {
   position: absolute;

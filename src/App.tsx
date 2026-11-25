@@ -25,13 +25,6 @@ function App() {
     setIndex(i => (i + d + N) % N)
   }, [])
 
-  const jump = useCallback((target: number) => {
-    setIndex(i => {
-      setDir(target > i ? 1 : -1)
-      return target
-    })
-  }, [])
-
   /* 键盘 ← → 翻页 */
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -67,13 +60,7 @@ function App() {
 
         <div className="style-pill">
           <span className="num">{String(index + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}</span>
-          <span>{style.name} · {style.en}</span>
-          <span className="dots">
-            {STYLES.map((s, i) => (
-              <span key={s.id} className={`dot ${i === index ? 'on' : ''}`} onClick={() => jump(i)} title={s.name} />
-            ))}
-          </span>
-          <span className="hint">← → 切换</span>
+          <span>{style.name}</span>
         </div>
 
         {toast && <div className="demo-toast">{toast}</div>}
