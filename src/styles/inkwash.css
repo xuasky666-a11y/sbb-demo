@@ -1,0 +1,175 @@
+/* ===== 风格七 · 国风水墨（宣纸 + 淡墨远山 + 朱砂印章） ===== */
+.theme-ink {
+  --nav-bg: rgba(248, 243, 230, 0.85);
+  --nav-fg: #3a3f3c;
+  --nav-border: rgba(90, 96, 90, 0.35);
+  --nav-shadow: 0 8px 22px rgba(70, 76, 70, 0.18);
+  --nav-blur: blur(10px);
+  --nav-hover-bg: rgba(90, 96, 90, 0.12);
+}
+
+.ink {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #2f3431;
+  background:
+    radial-gradient(ellipse 1200px 700px at 50% -10%, #faf6ea 0%, transparent 60%),
+    linear-gradient(180deg, #f6f1e3 0%, #f1ead8 78%, #e9e1cc 100%);
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+}
+
+/* --- 远山 / 朱日 / 竖排诗句 --- */
+.ink-mountains {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  width: 100%; height: 420px;
+  pointer-events: none;
+}
+.ink-sun {
+  position: absolute;
+  top: 150px; right: 300px;
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196, 74, 52, 0.5) 0%, rgba(196, 74, 52, 0.18) 62%, transparent 72%);
+  filter: blur(1px);
+}
+.ink-poem {
+  position: absolute;
+  left: 96px; top: 260px;
+  writing-mode: vertical-rl;
+  font-size: 30px;
+  letter-spacing: 0.5em;
+  color: rgba(60, 66, 62, 0.4);
+  pointer-events: none;
+}
+.ink-poem.right { left: auto; right: 96px; top: 320px; }
+
+/* --- 顶栏 --- */
+.ink-header {
+  width: 100%;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 46px 130px 0;
+}
+.ink-brand { display: flex; align-items: center; gap: 16px; }
+.ink-mark {
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #f6f1e3;
+  background: radial-gradient(circle at 34% 30%, #4d5450, #232825);
+  box-shadow: 0 4px 12px rgba(40, 46, 42, 0.3);
+}
+.ink-brand-text { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.ink-brand-name { font-size: 30px; font-weight: 700; letter-spacing: 0.2em; }
+.ink-ver { font-size: 13px; letter-spacing: 0.16em; opacity: 0.45; font-family: "Songti SC", serif; }
+
+.ink-cast { display: flex; align-items: center; gap: 16px; }
+.ink-cast-label {
+  writing-mode: vertical-rl;
+  font-size: 17px; letter-spacing: 0.3em;
+  color: rgba(60, 66, 62, 0.6);
+}
+.ink-seal {
+  width: 92px; height: 92px;
+  display: grid; grid-template-columns: 1fr 1fr; place-items: center;
+  padding: 8px;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 30% 26%, rgba(255, 255, 255, 0.22), transparent 55%),
+    linear-gradient(160deg, #c8452c, #a93420);
+  box-shadow: inset 0 0 0 3px rgba(246, 241, 227, 0.85), inset 0 0 0 5px rgba(169, 52, 32, 0.9), 0 6px 16px rgba(150, 50, 30, 0.35);
+  color: #f6f1e3;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 30px; font-weight: 700;
+  transform: rotate(2deg);
+  transition: transform 0.25s var(--ease-out-soft);
+}
+.ink-cast:hover .ink-seal { transform: rotate(-2deg) scale(1.05); }
+
+/* --- 时钟 --- */
+.ink-clock { margin-top: 34px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.ink-time {
+  font-family: "Songti SC", "STSong", "Kaiti SC", serif;
+  font-size: 172px; font-weight: 700; line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: #262b28;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.5), 0 12px 28px rgba(60, 66, 62, 0.14);
+}
+.ink-colon { opacity: 0.45; margin: 0 8px; }
+.ink-date { font-size: 25px; letter-spacing: 0.3em; color: rgba(50, 56, 52, 0.72); }
+
+/* --- 团扇应用 --- */
+.ink-apps { margin-top: 54px; display: flex; gap: 72px; }
+.ink-app { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.ink-fan {
+  width: 172px; height: 172px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #333935;
+  background:
+    radial-gradient(circle at 36% 30%, rgba(255, 255, 255, 0.9), rgba(250, 246, 234, 0.6) 60%),
+    #f8f3e6;
+  border: 2px solid rgba(60, 66, 62, 0.55);
+  box-shadow:
+    inset 0 0 0 6px rgba(246, 241, 227, 0.9),
+    inset 0 0 0 7.5px rgba(60, 66, 62, 0.28),
+    0 10px 26px rgba(70, 76, 70, 0.16);
+  transition: transform 0.3s var(--ease-out-soft), box-shadow 0.3s, border-color 0.3s;
+}
+.ink-app:hover .ink-fan {
+  transform: translateY(-6px);
+  border-color: #a93420;
+  box-shadow:
+    inset 0 0 0 6px rgba(246, 241, 227, 0.9),
+    inset 0 0 0 7.5px rgba(169, 52, 32, 0.45),
+    0 18px 36px rgba(70, 76, 70, 0.22);
+}
+.ink-app:active .ink-fan { transform: scale(0.95); }
+.ink-app-label { font-size: 24px; font-weight: 700; letter-spacing: 0.24em; text-indent: 0.24em; }
+
+/* --- 卷轴快捷栏 --- */
+.ink-scroll-wrap { margin-top: auto; margin-bottom: 46px; }
+.ink-scroll { display: flex; align-items: center; }
+.ink-rod {
+  width: 22px; height: 118px;
+  border-radius: 11px;
+  background: linear-gradient(90deg, #6d4a2f, #8a6142 45%, #5a3c26);
+  box-shadow: 0 6px 14px rgba(70, 50, 30, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.25);
+}
+.ink-scroll-paper {
+  display: flex; align-items: center; gap: 8px;
+  height: 96px;
+  padding: 0 34px;
+  background: linear-gradient(180deg, #fbf7ec, #f3edda);
+  border-top: 1.5px solid rgba(90, 96, 90, 0.3);
+  border-bottom: 1.5px solid rgba(90, 96, 90, 0.3);
+  box-shadow: 0 14px 30px rgba(70, 76, 70, 0.16), inset 0 0 24px rgba(180, 168, 130, 0.22);
+}
+.ink-tool {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 10px 26px;
+  border-radius: 12px;
+  font-size: 16px; letter-spacing: 0.14em;
+  color: #333935;
+  transition: background 0.22s, transform 0.22s var(--ease-out-soft);
+}
+.ink-tool:hover { background: rgba(90, 96, 90, 0.1); }
+.ink-tool:active { transform: scale(0.93); }
+.ink-tool-sep {
+  width: 1px; height: 54px; margin: 0 14px;
+  background: linear-gradient(180deg, transparent, rgba(60, 66, 62, 0.35), transparent);
+}
+.ink-exit-seal {
+  padding: 12px 22px;
+  border-radius: 10px;
+  background: linear-gradient(160deg, #c8452c, #a93420);
+  box-shadow: inset 0 0 0 2px rgba(246, 241, 227, 0.7), 0 5px 12px rgba(150, 50, 30, 0.35);
+  color: #f6f1e3;
+  font-size: 19px; font-weight: 700; letter-spacing: 0.2em; text-indent: 0.2em;
+  transition: transform 0.22s var(--ease-out-soft);
+}
+.ink-tool.exit:hover .ink-exit-seal { transform: scale(1.06); }

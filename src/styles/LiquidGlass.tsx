@@ -3,14 +3,14 @@ import { useClock } from '@/lib/useClock'
 import { CORE_APPS, QUICK_TOOLS, type ScreenProps } from './types'
 import './liquidglass.css'
 
-/** 风格二 · 苹果流体玻璃：流动光斑背景 + 高光玻璃面板 */
+/** 风格二 · 苹果流体玻璃：亮色丝绸光斑 + 高透白玻璃面板 */
 export function LiquidGlass({ onAction }: ScreenProps) {
   const { hh, mm, date, week } = useClock()
 
   return (
     <div className="glass">
       <div className="glass-aurora">
-        <i className="blob b1" /><i className="blob b2" /><i className="blob b3" /><i className="blob b4" />
+        <i className="blob b1" /><i className="blob b2" /><i className="blob b3" /><i className="blob b4" /><i className="blob b5" />
       </div>
       <div className="noise-layer" style={{ opacity: 0.04 }} />
 

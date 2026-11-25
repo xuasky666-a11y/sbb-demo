@@ -1,0 +1,150 @@
+/* ===== 风格九 · 黏土质感（Claymorphism：软糖立体 + 圆润厚描边） ===== */
+.theme-clay {
+  --nav-bg: #fdf9f2;
+  --nav-fg: #4a4458;
+  --nav-border: rgba(255, 255, 255, 0.9);
+  --nav-shadow: 0 10px 24px rgba(93, 84, 110, 0.18), inset 0 -4px 8px rgba(93, 84, 110, 0.08), inset 0 4px 8px rgba(255, 255, 255, 0.9);
+  --nav-blur: none;
+  --nav-hover-bg: #ffe9d6;
+}
+
+.clay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #4a4458;
+  background: linear-gradient(160deg, #eaf2ea 0%, #f6f0e6 52%, #f0e9f4 100%);
+  font-family: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", "PingFang SC", sans-serif;
+}
+
+/* --- 背景软斑 --- */
+.clay-blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.5; pointer-events: none; }
+.clay-blob.b1 { width: 640px; height: 640px; left: -160px; top: -120px; background: #cfe6cf; }
+.clay-blob.b2 { width: 700px; height: 700px; right: -180px; top: 40px; background: #f4ddd0; }
+.clay-blob.b3 { width: 620px; height: 620px; left: 32%; bottom: -260px; background: #e2d8f0; }
+
+/* --- 黏土基元：外软影 + 内上光下暗 --- */
+.clay-pill {
+  display: flex; align-items: center;
+  border-radius: 999px;
+  background: #fdf9f2;
+  box-shadow:
+    0 12px 26px rgba(93, 84, 110, 0.16),
+    inset 0 -6px 12px rgba(93, 84, 110, 0.08),
+    inset 0 6px 12px rgba(255, 255, 255, 0.95);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
+}
+.clay-pill:hover { transform: translateY(-3px) scale(1.02); }
+.clay-pill:active { transform: scale(0.96); }
+
+/* --- 顶栏 --- */
+.clay-header {
+  width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 46px 130px 0;
+}
+.clay-brand { gap: 14px; padding: 12px 26px 12px 14px; }
+.clay-mark {
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #a8502f;
+  background: #ffc4ae;
+  box-shadow: inset 0 -4px 8px rgba(168, 80, 47, 0.25), inset 0 4px 8px rgba(255, 255, 255, 0.7);
+}
+.clay-brand-name { font-size: 23px; font-weight: 800; letter-spacing: 0.08em; }
+.clay-ver { font-size: 13px; opacity: 0.45; letter-spacing: 0.08em; }
+.clay-cast { gap: 16px; padding: 14px 28px; background: #ffe3b3; }
+.clay-cast-label { font-size: 16px; opacity: 0.6; letter-spacing: 0.14em; font-weight: 700; }
+.clay-cast-code { font-size: 27px; font-weight: 800; letter-spacing: 0.24em; color: #8a6120; }
+
+/* --- 时钟：两块黏土砖 --- */
+.clay-clock { margin-top: 52px; display: flex; flex-direction: column; align-items: center; gap: 26px; }
+.clay-time { display: flex; align-items: center; gap: 22px; }
+.clay-tile {
+  padding: 6px 40px 14px;
+  border-radius: 44px;
+  background: #fdf9f2;
+  font-size: 148px; font-weight: 800; line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: #4a4458;
+  box-shadow:
+    0 20px 40px rgba(93, 84, 110, 0.18),
+    inset 0 -12px 20px rgba(93, 84, 110, 0.1),
+    inset 0 12px 20px rgba(255, 255, 255, 0.95);
+}
+.clay-colon { display: flex; flex-direction: column; gap: 26px; }
+.clay-colon i {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #c9b6f0;
+  box-shadow: inset 0 -3px 5px rgba(93, 84, 110, 0.3), inset 0 3px 5px rgba(255, 255, 255, 0.8), 0 4px 8px rgba(93, 84, 110, 0.18);
+}
+.clay-date { padding: 10px 28px; font-size: 19px; font-weight: 700; letter-spacing: 0.22em; }
+
+/* --- 软糖应用卡 --- */
+.clay-apps { margin-top: 62px; display: flex; gap: 54px; }
+.clay-app {
+  width: 196px; height: 196px;
+  border-radius: 46px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+  box-shadow:
+    0 18px 36px rgba(93, 84, 110, 0.2),
+    inset 0 -10px 18px rgba(93, 84, 110, 0.14),
+    inset 0 10px 18px rgba(255, 255, 255, 0.65);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s;
+}
+.clay-app:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow:
+    0 28px 50px rgba(93, 84, 110, 0.26),
+    inset 0 -10px 18px rgba(93, 84, 110, 0.14),
+    inset 0 10px 18px rgba(255, 255, 255, 0.75);
+}
+.clay-app:active { transform: scale(0.93); }
+.clay-app.courseware { background: #ffc4ae; color: #a8502f; }
+.clay-app.board { background: #b8e2c8; color: #35704c; }
+.clay-app.cast { background: #b5d4f5; color: #35619e; }
+.clay-app.live { background: #d4c4f0; color: #6a4fa8; }
+.clay-app-icon { filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.45)); }
+.clay-app-label { font-size: 21px; font-weight: 800; letter-spacing: 0.14em; text-indent: 0.14em; }
+
+/* --- 底部黏土 Dock --- */
+.clay-dock-wrap { margin-top: auto; margin-bottom: 46px; }
+.clay-dock {
+  display: flex; align-items: center; gap: 8px;
+  padding: 14px 24px;
+  border-radius: 44px;
+  background: #fdf9f2;
+  box-shadow:
+    0 20px 42px rgba(93, 84, 110, 0.2),
+    inset 0 -8px 16px rgba(93, 84, 110, 0.08),
+    inset 0 8px 16px rgba(255, 255, 255, 0.95);
+}
+.clay-dock-item {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 10px 24px;
+  border-radius: 28px;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.1em;
+  color: #4a4458;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s;
+}
+.clay-dock-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: #efe8f4;
+  box-shadow: inset 0 -4px 8px rgba(93, 84, 110, 0.14), inset 0 4px 8px rgba(255, 255, 255, 0.85);
+  transition: background 0.25s;
+}
+.clay-dock-item:hover { transform: translateY(-4px); }
+.clay-dock-item:hover .clay-dock-icon { background: #ffe3b3; }
+.clay-dock-item:active { transform: scale(0.92); }
+.clay-dock-item.exit { color: #b03a2e; }
+.clay-dock-item.exit .clay-dock-icon { background: #ffb3a6; color: #a02c20; }
+.clay-dock-item.exit:hover .clay-dock-icon { background: #ff9d8c; }
+.clay-dock-sep {
+  width: 2px; height: 56px; margin: 0 12px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, transparent, rgba(93, 84, 110, 0.2), transparent);
+}
