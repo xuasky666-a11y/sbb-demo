@@ -1,4 +1,4 @@
-import { CoreIcon } from '@/components/CoreIcon'
+import { SkeuIcon } from '@/components/SkeuIcon'
 import { QuickDock } from '@/components/QuickDock'
 import brandMark from '@/assets/brand-mark.png'
 import { useClock } from '@/lib/useClock'
@@ -40,7 +40,7 @@ export function Skeuomorphic({ onAction }: ScreenProps) {
         {CORE_APPS.map(app => (
           <button key={app.key} className="skeu-app tap" onClick={() => onAction(app.label)}>
             <span className="skeu-tile">
-              <CoreIcon name={app.key} size={112} />
+              <SkeuIcon name={app.key} size={112} />
             </span>
             <span className="skeu-app-label">{app.label}</span>
           </button>

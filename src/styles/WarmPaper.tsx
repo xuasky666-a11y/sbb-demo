@@ -1,4 +1,4 @@
-import { CoreIcon } from '@/components/CoreIcon'
+import { WarmIcon } from '@/components/WarmIcon'
 import { QuickDock } from '@/components/QuickDock'
 import brandMark from '@/assets/brand-mark.png'
 import { useClock } from '@/lib/useClock'
@@ -44,7 +44,7 @@ export function WarmPaper({ onAction }: ScreenProps) {
         {CORE_APPS.map((app, i) => (
           <button key={app.key} className={`warm-app tap w${i}`} onClick={() => onAction(app.label)}>
             <span className={`warm-app-icon c-${app.key}`}>
-              <CoreIcon name={app.key} size={84} />
+              <WarmIcon name={app.key} size={84} />
             </span>
             <span className="warm-app-label">{app.label}</span>
           </button>

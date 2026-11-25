@@ -1,4 +1,4 @@
-import { CoreIcon } from '@/components/CoreIcon'
+import { InkIcon } from '@/components/InkIcon'
 import { QuickDock } from '@/components/QuickDock'
 import brandMark from '@/assets/brand-mark.png'
 import { useClock } from '@/lib/useClock'
@@ -61,7 +61,7 @@ export function InkWash({ onAction }: ScreenProps) {
         {CORE_APPS.map(app => (
           <button key={app.key} className="ink-app tap" onClick={() => onAction(app.label)}>
             <span className="ink-fan">
-              <CoreIcon name={app.key} size={104} />
+              <InkIcon name={app.key} size={96} />
             </span>
             <span className="ink-app-label">{app.label}</span>
           </button>

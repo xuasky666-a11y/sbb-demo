@@ -1,4 +1,4 @@
-import { CoreIcon } from '@/components/CoreIcon'
+import { GlassIcon } from '@/components/GlassIcon'
 import { QuickDock } from '@/components/QuickDock'
 import brandMark from '@/assets/brand-mark.png'
 import { useClock } from '@/lib/useClock'
@@ -36,7 +36,7 @@ export function LiquidGlass({ onAction }: ScreenProps) {
       <section className="glass-apps">
         {CORE_APPS.map(app => (
           <button key={app.key} className="glass-app tap" onClick={() => onAction(app.label)}>
-            <span className="glass-app-icon"><CoreIcon name={app.key} size={100} /></span>
+            <span className="glass-app-icon"><GlassIcon name={app.key} size={100} /></span>
             <span className="glass-app-label">{app.label}</span>
           </button>
         ))}

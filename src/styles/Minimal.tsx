@@ -1,4 +1,4 @@
-import { CoreIcon } from '@/components/CoreIcon'
+import { Icon } from '@/components/Icon'
 import { QuickDock } from '@/components/QuickDock'
 import brandMark from '@/assets/brand-mark.png'
 import { useClock } from '@/lib/useClock'
@@ -35,7 +35,7 @@ export function Minimal({ onAction }: ScreenProps) {
         {CORE_APPS.map((app, i) => (
           <button key={app.key} className="mini-app tap" onClick={() => onAction(app.label)}>
             <span className="mini-index">0{i + 1}</span>
-            <CoreIcon name={app.key} size={84} />
+            <Icon name={app.key} size={72} strokeWidth={1.5} />
             <span className="mini-app-label">{app.label}</span>
             <i className="mini-underline" />
           </button>

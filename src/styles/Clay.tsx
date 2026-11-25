@@ -1,4 +1,4 @@
-import { CoreIcon } from '@/components/CoreIcon'
+import { ClayIcon } from '@/components/ClayIcon'
 import { QuickDock } from '@/components/QuickDock'
 import brandMark from '@/assets/brand-mark.png'
 import { useClock } from '@/lib/useClock'
@@ -39,7 +39,7 @@ export function Clay({ onAction }: ScreenProps) {
       <section className="clay-apps">
         {CORE_APPS.map(app => (
           <button key={app.key} className={`clay-app ${app.key} tap`} onClick={() => onAction(app.label)}>
-            <span className="clay-app-icon"><CoreIcon name={app.key} size={100} /></span>
+            <span className="clay-app-icon"><ClayIcon name={app.key} size={96} /></span>
             <span className="clay-app-label">{app.label}</span>
           </button>
         ))}
