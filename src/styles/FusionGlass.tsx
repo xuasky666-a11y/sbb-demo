@@ -1,28 +1,34 @@
 import { useState } from 'react'
-import { FIcon } from '@/components/fusion/FusionLineIcons'
 import { useClock } from '@/lib/useClock'
 import type { ScreenProps } from './types'
 import bg from '@/assets/fusion/fusion-bg.jpg'
 import logo from '@/assets/fusion/fusion-logo.svg'
 import pdfIcon from '@/assets/fusion/fusion-pdf-56586a.png'
 import robot from '@/assets/fusion/fusion-robot-67708c.png'
-import tileBase from '@/assets/fusion/fusion-tile-base.svg'
-import tileOutline from '@/assets/fusion/fusion-tile-outline.svg'
 import qr from '@/assets/fusion/fusion-qr.svg'
 import statusIcon from '@/assets/fusion/fusion-status.svg'
 import actDiscuss from '@/assets/fusion/fusion-act-discuss.svg'
 import actQuiz from '@/assets/fusion/fusion-act-quiz.svg'
-import logoFirefly from '@/assets/fusion/fusion-logo-firefly.svg'
-import logoXxt from '@/assets/fusion/fusion-logo-xxt.svg'
-import logoFanya from '@/assets/fusion/fusion-logo-fanya.svg'
-import platformImg from '@/assets/fusion/fusion-platform-147f2f.png'
-import toolCourseware from '@/assets/fusion/fusion-tool-courseware.svg'
-import toolPen from '@/assets/fusion/fusion-tool-pen.svg'
-import toolBoard from '@/assets/fusion/fusion-tool-board.svg'
-import toolInteract from '@/assets/fusion/fusion-tool-interact.svg'
-import toolMore from '@/assets/fusion/fusion-tool-more.svg'
-import settingsIcon from '@/assets/fusion/fusion-settings.svg'
-import exitIcon from '@/assets/fusion/fusion-exit.svg'
+import icGrid from '@/assets/fusion/fusion-ic-grid.svg'
+import icList from '@/assets/fusion/fusion-ic-list.svg'
+import icClock from '@/assets/fusion/fusion-ic-clock.svg'
+import icMonitor from '@/assets/fusion/fusion-ic-monitor.svg'
+import icChevronSm from '@/assets/fusion/fusion-ic-chevron-sm.svg'
+import icChevron from '@/assets/fusion/fusion-ic-chevron.svg'
+import icClockSm from '@/assets/fusion/fusion-ic-clock-sm.svg'
+import icFolder from '@/assets/fusion/fusion-ic-folder.svg'
+import icCloud from '@/assets/fusion/fusion-ic-cloud.svg'
+import icRefresh from '@/assets/fusion/fusion-ic-refresh.svg'
+import icCast from '@/assets/fusion/fusion-ic-cast.svg'
+import icShare from '@/assets/fusion/fusion-ic-share.svg'
+import tileCourseware from '@/assets/fusion/fusion-tile-courseware.png'
+import tilePen from '@/assets/fusion/fusion-tile-pen.png'
+import tileBoard from '@/assets/fusion/fusion-tile-board.png'
+import tileInteract from '@/assets/fusion/fusion-tile-interact.png'
+import tileMore from '@/assets/fusion/fusion-tile-more.png'
+import tilePlatform from '@/assets/fusion/fusion-tile-platform.png'
+import tileSettings from '@/assets/fusion/fusion-tile-settings.png'
+import tileExit from '@/assets/fusion/fusion-tile-exit.svg'
 import './fusion.css'
 
 const FILES = [
@@ -36,15 +42,16 @@ const ACTS = [
   { text: '光的反射知识点练习', icon: actQuiz },
   { text: '光的反射知识点练习', icon: actQuiz },
 ]
+/* 底栏瓷贴：Figma 整块切图（渐变+图标+文字胶囊+描边焙入），禁止 CSS 拼凑 */
 const TILES = [
-  { label: '课件', icon: toolCourseware, g: ['#FF7070', '#E52E2E'], x: 18, y: 15.39, w: 54, h: 57.68 },
-  { label: '画笔', icon: toolPen, g: ['#BA94FF', '#815BFC'], x: 16.11, y: -2.37, w: 89, h: 71.05 },
-  { label: '白板', icon: toolBoard, g: ['#FA8B4B', '#FA4E23'], x: 17, y: 9, w: 56, h: 55.17 },
-  { label: '互动', icon: toolInteract, g: ['#FEC775', '#E57A00'], x: 17, y: 13.17, w: 56, h: 48.12 },
-  { label: '更多', icon: toolMore, g: ['#93C5FE', '#226DF0'], x: 20.68, y: 15.93, w: 52.47, h: 52.47, ls: '-0.0588em' },
+  { label: '课件', img: tileCourseware },
+  { label: '画笔', img: tilePen },
+  { label: '白板', img: tileBoard },
+  { label: '互动', img: tileInteract },
+  { label: '更多', img: tileMore },
 ]
 
-/** 风格一 · 融合玻璃：macOS 丝绸壁纸 + 深蓝毛玻璃面板 + 写实渐变瓷贴底栏（Figma 9:3664 1:1） */
+/** 风格一 · 融合玻璃：macOS 丝绸壁纸 + 深蓝毛玻璃面板 + 写实渐变瓷贴底栏（Figma 9:3664 1:1，切图优先） */
 export function FusionGlass({ onAction }: ScreenProps) {
   const { hh, mm, date, week } = useClock()
   const [view, setView] = useState<'grid' | 'list'>('list')
@@ -76,14 +83,14 @@ export function FusionGlass({ onAction }: ScreenProps) {
           <div className="fg-head">
             <h2 className="fg-title">课件</h2>
             <div className="fg-tabs">
-              <button className={view === 'grid' ? 'on' : ''} onClick={() => setView('grid')} aria-label="宫格视图"><FIcon name="grid" size={20} /></button>
-              <button className={view === 'list' ? 'on' : ''} onClick={() => setView('list')} aria-label="列表视图"><FIcon name="list" size={20} /></button>
+              <button className={view === 'grid' ? 'on' : ''} onClick={() => setView('grid')} aria-label="宫格视图"><img className="ic" src={icGrid} width={20} height={20} alt="" /></button>
+              <button className={view === 'list' ? 'on' : ''} onClick={() => setView('list')} aria-label="列表视图"><img className="ic" src={icList} width={20} height={20} alt="" /></button>
             </div>
           </div>
           <div className="fg-body">
             <div className="fg-source">
-              <button className={src === 'recent' ? 'on' : ''} onClick={() => setSrc('recent')}><FIcon name="clock" size={18} />最近使用</button>
-              <button className={src === 'local' ? 'on' : ''} onClick={() => setSrc('local')}><FIcon name="monitor" size={18} />本地文件<FIcon name="chevron" size={18} /></button>
+              <button className={src === 'recent' ? 'on' : ''} onClick={() => setSrc('recent')}><img className="ic" src={icClock} width={18} height={18} alt="" />最近使用</button>
+              <button className={src === 'local' ? 'on' : ''} onClick={() => setSrc('local')}><img className="ic" src={icMonitor} width={18} height={18} alt="" />本地文件<img className="ic" src={icChevronSm} width={18} height={18} alt="" /></button>
             </div>
             <div className="fg-files">
               {FILES.map(f => (
@@ -92,12 +99,12 @@ export function FusionGlass({ onAction }: ScreenProps) {
                   <span className="fg-file-detail">
                     <span className="fg-file-title">{f.title}</span>
                     <span className="fg-file-meta">
-                      <span className="m"><FIcon name="clock" size={16} />2026-10-11 07:27</span>
+                      <span className="m"><img className="ic" src={icClockSm} width={16} height={16} alt="" />2026-10-11 07:27</span>
                       <i className="div" />
-                      <span className="m"><FIcon name={f.loc === 'local' ? 'folder' : 'cloud'} size={16} />{f.loc === 'local' ? '本地' : '云盘'}</span>
+                      <span className="m"><img className="ic" src={f.loc === 'local' ? icFolder : icCloud} width={16} height={16} alt="" />{f.loc === 'local' ? '本地' : '云盘'}</span>
                     </span>
                   </span>
-                  <FIcon name="chevron" size={20} />
+                  <img className="ic" src={icChevron} width={20} height={20} alt="" />
                 </button>
               ))}
             </div>
@@ -108,15 +115,16 @@ export function FusionGlass({ onAction }: ScreenProps) {
           <div className="fg-panel fg-board">
             <div className="fg-head">
               <h2 className="fg-title">白板</h2>
-              <button className="fg-collapse tap" onClick={() => onAction('收起白板')} aria-label="收起白板"><FIcon name="chevron" size={20} /></button>
+              <button className="fg-collapse tap" onClick={() => onAction('收起白板')} aria-label="收起白板"><img className="ic" src={icChevron} width={20} height={20} alt="" /></button>
             </div>
             <div className="fg-body fg-board-body">
               <div className="fg-clock">
                 <div className="fg-time">{hh}:{mm}</div>
                 <div className="fg-date">{date} {week}</div>
               </div>
-              <div className="fg-track" />
             </div>
+            {/* 黄色进度条：Figma 中为面板级绝对定位子元素，横向充满整个白板、贴底 */}
+            <div className="fg-track" />
             <i className="fg-thumb" />
           </div>
           <div className="fg-panel fg-castpanel">
@@ -126,8 +134,8 @@ export function FusionGlass({ onAction }: ScreenProps) {
                 <img className="fg-status" src={statusIcon} alt="" />
               </span>
               <div className="fg-tabs text">
-                <button className={castTab === 'cast' ? 'on' : ''} onClick={() => setCastTab('cast')}><FIcon name="screen" size={18} />投屏</button>
-                <button className={castTab === 'share' ? 'on' : ''} onClick={() => setCastTab('share')}><FIcon name="copy" size={18} />共享本机屏幕</button>
+                <button className={castTab === 'cast' ? 'on' : ''} onClick={() => setCastTab('cast')}><img className="ic" src={icCast} width={18} height={18} alt="" />投屏</button>
+                <button className={castTab === 'share' ? 'on' : ''} onClick={() => setCastTab('share')}><img className="ic" src={icShare} width={18} height={18} alt="" />共享本机屏幕</button>
               </div>
             </div>
             <div className="fg-cast-body">
@@ -139,7 +147,7 @@ export function FusionGlass({ onAction }: ScreenProps) {
                 </span>
                 <span className="fg-invite-row">
                   <span className="fg-code">{code}</span>
-                  <button className="fg-refresh tap" onClick={refresh}><FIcon name="refresh" size={16} />刷新</button>
+                  <button className="fg-refresh tap" onClick={refresh}><img className="ic" src={icRefresh} width={16} height={16} alt="" />刷新</button>
                 </span>
               </span>
             </div>
@@ -155,8 +163,8 @@ export function FusionGlass({ onAction }: ScreenProps) {
             <div className="fg-body">
               <div className="fg-class-rows">
                 <button className="fg-row tap" onClick={() => onAction('本教室课堂码')}><span>本教室课堂码</span><b className="fg-room">k004</b></button>
-                <button className="fg-row tap" onClick={() => onAction('加入其他线上课堂')}><span>加入其他线上课堂</span><FIcon name="chevron" size={20} /></button>
-                <button className="fg-row tap" onClick={() => onAction('最近使用的课堂')}><span className="fill">最近使用的课堂</span><FIcon name="chevron" size={20} /></button>
+                <button className="fg-row tap" onClick={() => onAction('加入其他线上课堂')}><span>加入其他线上课堂</span><img className="ic" src={icChevron} width={20} height={20} alt="" /></button>
+                <button className="fg-row tap" onClick={() => onAction('最近使用的课堂')}><span className="fill">最近使用的课堂</span><img className="ic" src={icChevron} width={20} height={20} alt="" /></button>
               </div>
             </div>
           </div>
@@ -186,38 +194,21 @@ export function FusionGlass({ onAction }: ScreenProps) {
         <i className="fg-sep" />
         <div className="fg-tools">
           {TILES.map(t => (
-            <button key={t.label} className="fg-tile tap" onClick={() => onAction(t.label)}>
-              <img className="base" src={tileBase} alt="" />
-              <i className="color" style={{ background: `linear-gradient(180deg, ${t.g[0]} 0%, ${t.g[1]} 80%)` }} />
-              <img className="glyph" src={t.icon} alt="" style={{ left: t.x, top: t.y, width: t.w, height: t.h }} />
-              <span className="label" style={t.ls ? { letterSpacing: t.ls } : undefined}>{t.label}</span>
-              <img className="rim" src={tileOutline} alt="" />
+            <button key={t.label} className="fg-tile tap" onClick={() => onAction(t.label)} aria-label={t.label}>
+              <img src={t.img} alt="" />
             </button>
           ))}
         </div>
         <i className="fg-sep" />
         <div className="fg-tools">
-          <button className="fg-tile tap" onClick={() => onAction('平台入口')}>
-            <img className="base" src={tileBase} alt="" />
-            <i className="color links" />
-            <span className="logos">
-              <img src={logoFirefly} alt="萤火虫" /><img src={logoXxt} alt="学习通" /><img src={logoFanya} alt="泛雅" /><img className="pf" src={platformImg} alt="" />
-            </span>
-            <img className="rim dim" src={tileOutline} alt="" />
+          <button className="fg-tile tap" onClick={() => onAction('平台入口')} aria-label="平台入口">
+            <img src={tilePlatform} alt="" />
           </button>
-          <button className="fg-tile tap" onClick={() => onAction('设置')}>
-            <img className="base" src={tileBase} alt="" />
-            <i className="color" style={{ background: 'linear-gradient(180deg, #BCBCD1 0%, #A5A7C2 100%)' }} />
-            <img className="glyph" src={settingsIcon} alt="" style={{ left: 16, top: 12, width: 58, height: 57.57 }} />
-            <span className="label muted">设置</span>
-            <img className="rim" src={tileOutline} alt="" />
+          <button className="fg-tile tap" onClick={() => onAction('设置')} aria-label="设置">
+            <img src={tileSettings} alt="" />
           </button>
-          <button className="fg-tile tap" onClick={() => onAction('下课')}>
-            <img className="base" src={tileBase} alt="" />
-            <i className="color" style={{ background: 'linear-gradient(180deg, #FFD570 0%, #FAA435 80%)' }} />
-            <img className="glyph" src={exitIcon} alt="" style={{ left: 25.37, top: 18.8, width: 50.51, height: 56.7 }} />
-            <span className="label exit">下课</span>
-            <img className="rim" src={tileOutline} alt="" />
+          <button className="fg-tile tap" onClick={() => onAction('下课')} aria-label="下课">
+            <img className="full" src={tileExit} alt="" />
           </button>
         </div>
       </footer>
