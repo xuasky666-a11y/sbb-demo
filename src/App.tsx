@@ -7,6 +7,8 @@ const N = STYLES.length
 
 /* 场景背景透明"白板洞"实测边界（1920×1080 设计坐标） */
 const HOLE = { x: 621.3, y: 167.5, w: 691.3, h: 382.5 }
+/* 黑板右侧蓝色墙牌实测边界（风格指示载体） */
+const BADGE = { x: 1335, y: 461.3, w: 97.5, h: 95 }
 
 const ExpandIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -100,9 +102,17 @@ function App() {
       {/* 教室场景：背景填充顶对齐 + Figma 规格玻璃切换按钮 */}
       <div className="scene-frame" style={{ transform: `translate(${cox}px, 0px) scale(${cover})` }}>
         <img className="scene-bg" src="/classroom-bg.png" alt="智慧教室场景" />
+        {/* 风格指示：蓝色墙牌上的 序号/总数 + 风格名 */}
+        <div className="scene-badge" style={{ left: BADGE.x, top: BADGE.y, width: BADGE.w, height: BADGE.h }}>
+          <div className="row">
+            <span className="idx">{index + 1}</span>
+            <span className="total">/{N}</span>
+          </div>
+          <div className="name">{style.name}</div>
+        </div>
       </div>
 
-      {/* 场景控件（屏幕空间）：翻页按钮恒在画面内 + 底部风格指示 */}
+      {/* 场景控件（屏幕空间）：翻页按钮恒在画面内 */}
       <div className="scene-ui">
         <button
           className="glass-nav"
@@ -122,10 +132,6 @@ function App() {
         >
           <Icon name="chevron-right" size={navSize * 0.42} strokeWidth={2.3} />
         </button>
-        <div className="scene-pill">
-          <span className="num">{String(index + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}</span>
-          <span>{style.name}</span>
-        </div>
       </div>
 
       {/* 黑板舞台：场景内嵌于白板洞，点击后 zoom 全屏 */}

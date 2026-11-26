@@ -71,29 +71,45 @@
 }
 .glass-nav:active { transform: scale(0.95); }
 
-/* 场景底部风格指示（屏幕空间，恒在画面内） */
-.scene-pill {
+/* 风格指示：还原到黑板右侧蓝色墙牌上（白字·大序号+/N+名称） */
+.scene-badge {
   position: absolute;
-  left: 50%;
-  bottom: 20px;
-  transform: translateX(-50%);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
-  padding: 10px 22px;
-  border-radius: 999px;
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  color: #2f5586;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.46));
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 16px 40px rgba(43, 92, 153, 0.1);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  white-space: nowrap;
+  justify-content: center;
+  gap: 7px;
+  color: #fff;
+  pointer-events: none;
   user-select: none;
+  transition: opacity 0.35s var(--ease-out-soft);
 }
-.scene-pill .num { opacity: 0.6; font-variant-numeric: tabular-nums; }
+.mode-board .scene-badge { opacity: 0; }
+.scene-badge .row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  line-height: 1;
+}
+.scene-badge .idx {
+  font-size: 27px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+}
+.scene-badge .total {
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.92;
+  font-variant-numeric: tabular-nums;
+}
+.scene-badge .name {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  opacity: 0.95;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+}
 
 /* 黑板舞台层：场景内嵌于白板洞 ↔ 全屏，transform 平滑 zoom */
 .board-layer {
