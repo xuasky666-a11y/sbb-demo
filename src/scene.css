@@ -1,0 +1,205 @@
+/* ========== 教室场景 ↔ 黑板全屏 双模式 ========== */
+/* 场景背景自带透明"白板洞"，黑板舞台嵌于洞内；点击黑板 zoom 至全屏 */
+
+/* 场景环境光letterbox（与全屏暗色letterbox交叉淡入淡出） */
+.ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1400px 800px at 50% 30%, #e9eff7, #cfd9e8 70%, #c3cfe2);
+  transition: opacity 0.6s var(--ease-out-soft);
+}
+.mode-board .ambient { opacity: 0; }
+
+/* 场景框架：1920×1080 等比缩放，内部坐标即设计坐标 */
+.scene-frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: 0 0;
+  z-index: 10;
+  pointer-events: none;
+}
+.scene-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.55s var(--ease-out-soft);
+}
+.mode-board .scene-bg { opacity: 0; }
+
+.scene-ui {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.35s var(--ease-out-soft);
+}
+.mode-board .scene-ui { opacity: 0; }
+.scene-ui > * { pointer-events: auto; }
+
+/* Figma 切换按钮：100×100 圆形白玻璃 + 渐变白描边 + 软投影 */
+.glass-nav {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #2f5586;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.42) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.32);
+  box-shadow:
+    0 30px 60px rgba(43, 92, 153, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  transition: transform 0.25s var(--ease-out-soft), background 0.25s, box-shadow 0.25s;
+  white-space: nowrap;
+}
+.glass-nav:hover {
+  transform: scale(1.07);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.55) 100%);
+  box-shadow: 0 34px 70px rgba(43, 92, 153, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+.glass-nav:active { transform: scale(0.95); }
+.glass-nav.left { left: 180px; top: 320px; }
+.glass-nav.right { left: 1640px; top: 320px; }
+
+/* 场景底部风格指示 */
+.scene-pill {
+  position: absolute;
+  left: 960px;
+  top: 1006px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: #2f5586;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.46));
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 16px 40px rgba(43, 92, 153, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  white-space: nowrap;
+  user-select: none;
+}
+.scene-pill .num { opacity: 0.6; font-variant-numeric: tabular-nums; }
+
+/* 点击黑板提示 */
+.scene-hint {
+  position: absolute;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  color: #2f5586;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.5));
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 14px 34px rgba(43, 92, 153, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  animation: hint-float 3.2s ease-in-out infinite;
+}
+@keyframes hint-float {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -6px; }
+}
+
+/* 黑板舞台层：场景内嵌于白板洞 ↔ 全屏，transform 平滑 zoom */
+.board-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: 0 0;
+  z-index: 20;
+  transition: transform 0.7s var(--ease-out-soft);
+}
+.mode-scene .board-layer .stage { box-shadow: none; }
+
+/* 场景内整块黑板可点击放大 */
+.board-click {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  cursor: zoom-in;
+}
+.mode-board .board-click { display: none; }
+
+.board-hover {
+  position: absolute;
+  inset: 0;
+  z-index: 46;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: #fff;
+  background: rgba(18, 28, 48, 0.3);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out-soft);
+  pointer-events: none;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+}
+.mode-scene .board-layer:hover .board-hover { opacity: 1; }
+.mode-board .board-hover { display: none; }
+.board-hover .ring {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* 全屏返回场景 */
+.back-chip {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 55;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--nav-fg);
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-border);
+  backdrop-filter: var(--nav-blur);
+  -webkit-backdrop-filter: var(--nav-blur);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.25s, transform 0.25s var(--ease-out-soft);
+  animation: toast-in 0.4s var(--ease-out-soft) both;
+}
+.back-chip:hover { background: var(--nav-hover-bg); transform: scale(1.04); }
