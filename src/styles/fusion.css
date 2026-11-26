@@ -86,8 +86,10 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
+  position: relative;
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* 描边用 inset 环形阴影而非物理 border：border 会让 Chromium 产生 border-box/padding-box 双圆角曲线，
+     overflow 合成裁切时背景沿内曲线被切，四角出现填色与描边离缝；环形阴影与背景共用同一曲线 */
   /* 毛玻璃离线烘焙：blur(80) 壁纸作底层背景，按 1920×1080 舞台坐标逐面板对齐；
      不用运行时 backdrop-filter——Chromium 在 hover 合成层提升时会使其采样失效（背景色闪烁） */
   background-image: linear-gradient(180deg, rgba(20, 53, 102, 0.7) 0%, rgba(6, 28, 61, 0.7) 100%), url('../assets/fusion/fusion-bg-blur.jpg');
@@ -96,6 +98,15 @@
   background-repeat: no-repeat;
   box-shadow: 0 2px 24px rgba(0, 37, 89, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.16);
   overflow: hidden;
+}
+/* 描边覆层：压在内容（含贴底黄条）之上，与背景共用同一圆角曲线，无裁切离缝 */
+.fg-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  pointer-events: none;
 }
 .fg-head {
   display: flex;
@@ -162,7 +173,7 @@
 .fg-tabs.text button.on { color: #fff; background: rgba(255, 255, 255, 0.16); }
 
 /* ---------- 课件列 ---------- */
-.fg-col-course { width: 510px; flex: none; --bgx: -171px; --bgy: -161px; }
+.fg-col-course { width: 510px; flex: none; --bgx: -170px; --bgy: -160px; }
 .fg-source {
   display: flex;
   padding: 4px;
@@ -217,8 +228,8 @@
 .fg-board {
   flex: 1;
   position: relative;
-  --bgx: -713px;
-  --bgy: -161px;
+  --bgx: -712px;
+  --bgy: -160px;
   background-image:
     linear-gradient(26deg, rgba(38, 86, 72, 0.7) 8%, rgba(12, 131, 111, 0.7) 100%),
     linear-gradient(180deg, rgba(20, 53, 102, 0.7) 0%, rgba(6, 28, 61, 0.7) 100%),
@@ -277,7 +288,7 @@
   background: #FFCC80;
 }
 
-.fg-castpanel { height: 300px; flex: none; --bgx: -713px; --bgy: -581px; }
+.fg-castpanel { height: 300px; flex: none; --bgx: -712px; --bgy: -580px; }
 .fg-cast-body {
   flex: 1;
   min-height: 0;
@@ -316,8 +327,8 @@
 .fg-refresh:hover { color: #fff; }
 
 /* ---------- 右列：线上课堂 + 活动 ---------- */
-.fg-class { flex: 1; --bgx: -1248px; --bgy: -161px; }
-.fg-acts { flex: 1; --bgx: -1248px; --bgy: -537px; }
+.fg-class { flex: 1; --bgx: -1247px; --bgy: -160px; }
+.fg-acts { flex: 1; --bgx: -1247px; --bgy: -536px; }
 .fg-switch {
   position: relative;
   width: 54px;
