@@ -2,3 +2,5 @@ node_modules/
 dist/
 .DS_Store
 *.local
+# Figma 原始下载图（超 IDE 快照上限，仅本地留存；线上用压缩版 fusion-bg.jpg）
+src/assets/fusion/fusion-bg.png

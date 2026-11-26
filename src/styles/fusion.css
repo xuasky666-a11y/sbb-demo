@@ -1,0 +1,446 @@
+/* ===== 风格一 · 融合玻璃（Figma 9:3664 1:1） ===== */
+.theme-fusion {
+  --nav-bg: rgba(10, 30, 66, 0.55);
+  --nav-fg: rgba(240, 246, 255, 0.95);
+  --nav-border: rgba(255, 255, 255, 0.24);
+  --nav-shadow: 0 10px 30px rgba(0, 20, 50, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --nav-blur: blur(20px);
+  --nav-hover-bg: rgba(20, 50, 100, 0.65);
+  --dock-fg: rgba(240, 246, 255, 0.92);
+  --dock-exit: #ffffff;
+  --dock-sep: rgba(255, 255, 255, 0.25);
+  --dock-hover: rgba(255, 255, 255, 0.12);
+}
+
+.fusion {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  font-family: "Alibaba PuHuiTi 3.0", "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+.fusion .fg-i { flex: none; display: block; }
+
+/* ---------- 顶栏 ---------- */
+.fg-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  flex: none;
+}
+.fg-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+.fg-logo { width: 40px; height: 40px; border-radius: 8.53px; }
+.fg-brand-name {
+  padding-top: 4px;
+  font-family: "FZZhengHeiS-M-GB", "PingFang SC", sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.0667em;
+  text-shadow: 0 2px 4px rgba(0, 26, 77, 0.4);
+}
+.fg-ver {
+  position: absolute;
+  left: 52px;
+  top: 49px;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 4px rgba(0, 26, 77, 0.4);
+}
+.fg-cast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7.5px 20px;
+  border-radius: 50px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.fg-cast-label { font-size: 24px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+.fg-cast-code {
+  font-family: "D-DIN Exp", "DIN Alternate", "Bahnschrift", "SF Pro Display", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: 0.0625em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- 三列操作区 ---------- */
+.fg-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 32px;
+  padding: 60px 120px;
+}
+.fg-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(180deg, rgba(20, 53, 102, 0.7) 0%, rgba(6, 28, 61, 0.7) 100%);
+  box-shadow: 0 2px 24px rgba(0, 37, 89, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(80px);
+  -webkit-backdrop-filter: blur(80px);
+  overflow: hidden;
+}
+.fg-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 32px 0;
+  flex: none;
+}
+.fg-head.between { justify-content: space-between; }
+.fg-head-left { display: flex; align-items: center; gap: 10px; }
+.fg-title {
+  flex: 1;
+  margin: 0;
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.4;
+  color: #fff;
+}
+.fg-head.between .fg-title, .fg-head-left .fg-title { flex: none; }
+.fg-status { width: 16px; height: 16px; opacity: 0.85; }
+.fg-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px 30px 30px;
+}
+
+/* 胶囊 tab（图标 / 文字） */
+.fg-tabs {
+  display: flex;
+  align-items: stretch;
+  gap: 3px;
+  padding: 3px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.16);
+  flex: none;
+}
+.fg-tabs button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 36px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.fg-tabs button.on {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+}
+.fg-tabs.text { height: auto; align-items: center; }
+.fg-tabs.text button {
+  width: auto;
+  padding: 7px 12px;
+  gap: 4px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.fg-tabs.text button.on { color: #fff; background: rgba(255, 255, 255, 0.16); }
+
+/* ---------- 课件列 ---------- */
+.fg-col-course { width: 510px; flex: none; }
+.fg-source {
+  display: flex;
+  padding: 4px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.16);
+  flex: none;
+}
+.fg-source button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.fg-source button.on { background: rgba(255, 255, 255, 0.16); color: #fff; }
+.fg-files { display: flex; flex-direction: column; gap: 16px; }
+.fg-file {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 16px;
+  border-radius: 24px;
+  background: rgba(128, 149, 255, 0.1);
+  text-align: left;
+  color: rgba(255, 255, 255, 0.7);
+  transition: background 0.2s;
+}
+.fg-file:hover { background: rgba(128, 149, 255, 0.18); }
+.fg-file-icon { width: 64px; height: 64px; flex: none; }
+.fg-file-detail { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.fg-file-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: normal; /* 覆盖 .tap 的 nowrap，长标题换行 */
+}
+.fg-file-meta { display: flex; align-items: center; gap: 20px; font-size: 17px; line-height: 1.2; }
+.fg-file-meta .m { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.fg-file-meta .div { width: 1px; height: 11.15px; background: rgba(255, 255, 255, 0.2); }
+
+/* ---------- 中列：白板时钟 + 投屏 ---------- */
+.fg-col-mid, .fg-col-right { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 32px; }
+.fg-board {
+  flex: 1;
+  position: relative;
+  background:
+    linear-gradient(26deg, rgba(38, 86, 72, 0.7) 8%, rgba(12, 131, 111, 0.7) 100%),
+    linear-gradient(180deg, rgba(20, 53, 102, 0.7) 0%, rgba(6, 28, 61, 0.7) 100%);
+}
+.fg-collapse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 3px 3px 3px 5px;
+  border-radius: 32px;
+  background: rgba(0, 0, 0, 0.16);
+  color: #fff;
+  cursor: pointer;
+  flex: none;
+}
+.fg-board-body { gap: 30px; }
+.fg-clock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding-bottom: 30px;
+}
+.fg-time {
+  font-family: "D-DIN Exp", "DIN Alternate", "Bahnschrift", "SF Pro Display", sans-serif;
+  font-weight: 700;
+  font-size: 100px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  font-variant-numeric: tabular-nums;
+}
+.fg-date {
+  font-size: 30px;
+  letter-spacing: 0.0667em;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+.fg-track { height: 18px; flex: none; background: #FFAD33; }
+.fg-thumb {
+  position: absolute;
+  left: 400px;
+  top: 362px;
+  width: 60px;
+  height: 6px;
+  border-radius: 4px;
+  background: #FFCC80;
+}
+
+.fg-castpanel { height: 300px; flex: none; }
+.fg-cast-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 16px 40px 30px;
+}
+.fg-qr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  padding: 4px 16px;
+  border-radius: 12px;
+  background: #fff;
+  flex: none;
+}
+.fg-qr img { height: 108px; width: 108px; }
+.fg-invite { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.fg-invite-tip { display: flex; flex-direction: column; gap: 8px; font-size: 18px; line-height: 1.2; color: rgba(255, 255, 255, 0.8); }
+.fg-invite-tip span { white-space: nowrap; } /* 同 Figma hug：单行溢出到面板内边距内 */
+.fg-invite-row { display: flex; align-items: center; gap: 16px; }
+.fg-code {
+  padding: 8px 28px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.0357em;
+  color: rgba(255, 255, 255, 0.8);
+}
+.fg-refresh { display: flex; align-items: center; gap: 4px; font-size: 16px; color: rgba(255, 255, 255, 0.7); cursor: pointer; }
+.fg-refresh:hover { color: #fff; }
+
+/* ---------- 右列：线上课堂 + 活动 ---------- */
+.fg-class, .fg-acts { flex: 1; }
+.fg-switch {
+  position: relative;
+  width: 54px;
+  height: 30px;
+  border-radius: 21px;
+  background: rgba(208, 213, 219, 0.3);
+  cursor: pointer;
+  flex: none;
+  transition: background 0.25s;
+}
+.fg-switch i {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s var(--ease-out-soft);
+}
+.fg-switch.on { background: #266FFF; }
+.fg-switch.on i { transform: translateX(24px); }
+.fg-class-rows { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+.fg-row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: 24px;
+  background: rgba(128, 149, 255, 0.1);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-align: left;
+  transition: background 0.2s;
+}
+.fg-row:hover { background: rgba(128, 149, 255, 0.18); }
+.fg-row .fill { flex: 1; }
+.fg-room { font-size: 26px; letter-spacing: 0.0385em; line-height: 1.2; }
+.fg-act-list { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+.fg-act {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 12px 20px;
+  border-radius: 24px;
+  background: rgba(128, 149, 255, 0.1);
+}
+.fg-act-main { flex: 1; min-width: 0; display: flex; align-items: center; gap: 16px; }
+.fg-act-main img { width: 40px; height: 40px; border-radius: 12px; flex: none; }
+.fg-act-text { font-size: 18px; font-weight: 500; color: rgba(255, 255, 255, 0.8); }
+.fg-start {
+  padding: 4px 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #7EB6FF;
+  cursor: pointer;
+  flex: none;
+}
+.fg-start:hover { color: #a8ceff; }
+
+/* ---------- 底栏：写实瓷贴 ---------- */
+.fg-dock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex: none;
+}
+.fg-sep { width: 1.6px; height: 64px; background: rgba(255, 255, 255, 0.12); }
+.fg-tools { display: flex; align-items: center; gap: 40px; }
+.fg-assistant { position: relative; width: 90px; height: 90px; flex: none; cursor: pointer; }
+.fg-assistant .robot { position: absolute; left: 0.34px; top: -7.5px; width: 99.16px; height: 105px; }
+
+.fg-tile {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  flex: none;
+  cursor: pointer;
+  box-shadow: 0 4px 40px rgba(26, 23, 23, 0.08);
+  transition: transform 0.22s var(--ease-out-soft);
+}
+.fg-tile:hover { transform: translateY(-4px); }
+.fg-tile:active { transform: scale(0.95); }
+.fg-tile .base, .fg-tile .rim { position: absolute; inset: 0; width: 90px; height: 90px; }
+.fg-tile .color {
+  position: absolute;
+  inset: 0;
+  clip-path: path('M45 0C77.8528 0 90 12.1472 90 45C90 77.8528 77.8528 90 45 90C12.1472 90 0 77.8528 0 45C0 12.1472 12.1472 0 45 0Z');
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.16);
+}
+.fg-tile .color.links { background: rgba(77, 75, 73, 0.7); backdrop-filter: blur(10px); }
+.fg-tile .glyph { position: absolute; }
+.fg-tile .rim { pointer-events: none; }
+.fg-tile .rim.dim { opacity: 0.14; }
+.fg-tile .label {
+  position: absolute;
+  left: 0;
+  top: 57.18px;
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px 8px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: 0.1176em;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+.fg-tile .label.muted { font-weight: 500; letter-spacing: 0.0588em; color: #72738F; text-shadow: none; }
+.fg-tile .label.exit { font-weight: 500; letter-spacing: 0.0588em; color: #CC4A4A; text-shadow: none; }
+.fg-tile .logos {
+  position: absolute;
+  left: 0.24px;
+  top: 0.33px;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+.fg-tile .logos img { width: 29px; height: 29px; border-radius: 10px; }
+.fg-tile .logos img.pf { opacity: 0.91; }

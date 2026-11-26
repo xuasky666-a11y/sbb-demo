@@ -1,5 +1,6 @@
 import type { ComponentType } from 'react'
 import type { ScreenProps } from './types'
+import { FusionGlass } from './FusionGlass'
 import { Skeuomorphic } from './Skeuomorphic'
 import { LiquidGlass } from './LiquidGlass'
 import { Minimal } from './Minimal'
@@ -17,8 +18,9 @@ export interface StyleDef {
   component: ComponentType<ScreenProps>
 }
 
-/** 九种视觉风格，左右翻页依次切换 */
+/** 十种视觉风格，左右翻页依次切换（融合玻璃为用户自出设计，置首） */
 export const STYLES: StyleDef[] = [
+  { id: 'fusion', name: '融合玻璃', en: 'Fusion Glass', component: FusionGlass },
   { id: 'skeu', name: '拟物质感', en: 'Skeuomorphic', component: Skeuomorphic },
   { id: 'glass', name: '苹果流体玻璃', en: 'Liquid Glass', component: LiquidGlass },
   { id: 'mini', name: '极简', en: 'Minimal', component: Minimal },
