@@ -69,17 +69,13 @@ button {
 .screen-enter {
   position: absolute;
   inset: 0;
+  animation: enter-fade 0.5s var(--ease-out-soft) both;
 }
-.screen-enter.from-right { animation: enter-right 0.6s var(--ease-out-soft) both; }
-.screen-enter.from-left  { animation: enter-left  0.6s var(--ease-out-soft) both; }
 
-@keyframes enter-right {
-  from { opacity: 0; transform: translateX(72px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes enter-left {
-  from { opacity: 0; transform: translateX(-72px); }
-  to   { opacity: 1; transform: translateX(0); }
+/* 原地显隐（不做左右滚动） */
+@keyframes enter-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 /* ========== 翻页控件 ========== */

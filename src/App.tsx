@@ -23,12 +23,11 @@ function App() {
   /* 刷新默认进入教室场景 */
   const [mode, setMode] = useState<'scene' | 'board'>('scene')
   const [index, setIndex] = useState(0)
-  const [dir, setDir] = useState<1 | -1>(1)
   const [vp, setVp] = useState({ w: window.innerWidth, h: window.innerHeight })
   const [toast, setToast] = useState<string | null>(null)
+  const [hover, setHover] = useState(false)
   const toastTimer = useRef<number>()
 
-  /* 舞台等比缩放适配窗口 */
   useEffect(() => {
     const onResize = () => setVp({ w: window.innerWidth, h: window.innerHeight })
     window.addEventListener('resize', onResize)
@@ -36,7 +35,6 @@ function App() {
   }, [])
 
   const go = useCallback((d: 1 | -1) => {
-    setDir(d)
     setIndex(i => (i + d + N) % N)
   }, [])
 
@@ -61,21 +59,25 @@ function App() {
   const Screen = style.component
   const board = mode === 'board'
 
-  /* 全屏缩放与场景缩放共用同一 fit；黑板层在"白板洞 ↔ 全屏"间 zoom */
-  const fit = Math.min(vp.w / 1920, vp.h / 1080)
-  const ox = (vp.w - 1920 * fit) / 2
-  const oy = (vp.h - 1080 * fit) / 2
-  const tx = board ? ox : ox + HOLE.x * fit
-  const ty = board ? oy : oy + HOLE.y * fit
-  const sx = board ? fit : (fit * HOLE.w) / 1920
-  const sy = board ? fit : (fit * HOLE.h) / 1080
+  /* 场景背景：填充(cover) + 顶对齐；全屏舞台：等比(contain)居中 */
+  const cover = Math.max(vp.w / 1920, vp.h / 1080)
+  const cox = (vp.w - 1920 * cover) / 2
+  const contain = Math.min(vp.w / 1920, vp.h / 1080)
+  const fox = (vp.w - 1920 * contain) / 2
+  const foy = (vp.h - 1080 * contain) / 2
+
+  /* 黑板层在"白板洞(cover 坐标) ↔ 全屏(contain 坐标)"间 zoom */
+  const tx = board ? fox : cox + HOLE.x * cover
+  const ty = board ? foy : HOLE.y * cover
+  const sx = board ? contain : (cover * HOLE.w) / 1920
+  const sy = board ? contain : (cover * HOLE.h) / 1080
 
   return (
     <div className={`viewport app mode-${mode}`}>
       <div className="ambient" />
 
-      {/* 教室场景：背景 + Figma 规格玻璃切换按钮 */}
-      <div className="scene-frame" style={{ transform: `translate(${ox}px, ${oy}px) scale(${fit})` }}>
+      {/* 教室场景：背景填充顶对齐 + Figma 规格玻璃切换按钮 */}
+      <div className="scene-frame" style={{ transform: `translate(${cox}px, 0px) scale(${cover})` }}>
         <img className="scene-bg" src="/classroom-bg.png" alt="智慧教室场景" />
         <div className="scene-ui">
           <button className="glass-nav left" onClick={() => go(-1)} aria-label="上一个风格" title="上一个风格（←）">
@@ -88,17 +90,18 @@ function App() {
             <span className="num">{String(index + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}</span>
             <span>{style.name}</span>
           </div>
-          <div className="scene-hint" style={{ left: HOLE.x + HOLE.w / 2, top: HOLE.y + HOLE.h + 16 }}>
-            <ExpandIcon size={16} />
-            点击黑板 · 进入全屏演示
-          </div>
         </div>
       </div>
 
       {/* 黑板舞台：场景内嵌于白板洞，点击后 zoom 全屏 */}
-      <div className="board-layer" style={{ transform: `translate(${tx}px, ${ty}px) scale(${sx}, ${sy})` }}>
+      <div
+        className="board-layer"
+        style={{ transform: `translate(${tx}px, ${ty}px) scale(${sx}, ${sy})` }}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
         <div className={`stage theme-${style.id}`}>
-          <div key={style.id} className={`screen-enter ${dir === 1 ? 'from-right' : 'from-left'}`}>
+          <div key={style.id} className="screen-enter">
             <Screen onAction={onAction} />
           </div>
 
@@ -124,16 +127,20 @@ function App() {
           {toast && <div className="demo-toast">{toast}</div>}
 
           {!board && (
-            <>
-              <div className="board-click" onClick={() => setMode('board')} role="button" aria-label="进入黑板全屏" />
-              <div className="board-hover">
-                <span className="ring"><ExpandIcon size={30} /></span>
-                点击进入全屏
-              </div>
-            </>
+            <div className="board-click" onClick={() => setMode('board')} role="button" aria-label="进入黑板全屏" />
           )}
         </div>
       </div>
+
+      {/* 悬停灰遮罩 + 进入全屏按钮（屏幕空间，文字恒为 14px） */}
+      {!board && hover && (
+        <div className="board-hover-screen" style={{ left: tx, top: ty, width: 1920 * sx, height: 1080 * sy }}>
+          <div className="enter-btn">
+            <span className="ring"><ExpandIcon size={26} /></span>
+            <span className="txt">点击进入全屏</span>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
