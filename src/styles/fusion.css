@@ -258,7 +258,8 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding-bottom: 30px;
+  /* Figma #20:10687：内间距上 0 下 48，时间组件非完全居中 */
+  padding-bottom: 48px;
 }
 .fg-time {
   font-family: "D-DIN Exp", "DIN Alternate", "Bahnschrift", "SF Pro Display", sans-serif;
@@ -272,6 +273,7 @@
 }
 .fg-date {
   font-size: 30px;
+  line-height: 1.8; /* Figma：1.8em */
   letter-spacing: 0.0667em;
   color: rgba(255, 255, 255, 0.8);
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
