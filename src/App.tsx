@@ -26,12 +26,26 @@ function App() {
   const [vp, setVp] = useState({ w: window.innerWidth, h: window.innerHeight })
   const [toast, setToast] = useState<string | null>(null)
   const [hover, setHover] = useState(false)
+  const [zooming, setZooming] = useState(false)
   const toastTimer = useRef<number>()
+  const zoomTimer = useRef<number>()
 
   useEffect(() => {
-    const onResize = () => setVp({ w: window.innerWidth, h: window.innerHeight })
+    const onResize = () => {
+      setVp({ w: window.innerWidth, h: window.innerHeight })
+      /* resize 时关闭 zoom 过渡，黑板与背景瞬时同步 */
+      setZooming(false)
+    }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
+  }, [])
+
+  /* 模式切换：与 transform 变化同帧启用 zoom 过渡，避免跳变 */
+  const toggleMode = useCallback((m: 'scene' | 'board') => {
+    setZooming(true)
+    setMode(m)
+    window.clearTimeout(zoomTimer.current)
+    zoomTimer.current = window.setTimeout(() => setZooming(false), 750)
   }, [])
 
   const go = useCallback((d: 1 | -1) => {
@@ -43,11 +57,11 @@ function App() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') go(1)
       if (e.key === 'ArrowLeft') go(-1)
-      if (e.key === 'Escape') setMode('scene')
+      if (e.key === 'Escape') toggleMode('scene')
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [go])
+  }, [go, toggleMode])
 
   const onAction = useCallback((label: string) => {
     setToast(`演示模式 · 已点击「${label}」`)
@@ -72,6 +86,13 @@ function App() {
   const sx = board ? contain : (cover * HOLE.w) / 1920
   const sy = board ? contain : (cover * HOLE.h) / 1080
 
+  /* 翻页按钮屏幕空间自适应：尺寸随窗口缩放，位置夹取保证恒在画面内 */
+  const navSize = Math.max(64, Math.min(100, vp.w * 0.052))
+  const boardCY = ty + (1080 * sy) / 2
+  const navTop = Math.max(16, Math.min(vp.h - navSize - 16, boardCY - navSize / 2))
+  const navLeft = Math.max(16, Math.min(vp.w - navSize - 16, cox + 180 * cover))
+  const navRight = Math.max(16, Math.min(vp.w - navSize - 16, cox + 1640 * cover))
+
   return (
     <div className={`viewport app mode-${mode}`}>
       <div className="ambient" />
@@ -79,23 +100,37 @@ function App() {
       {/* 教室场景：背景填充顶对齐 + Figma 规格玻璃切换按钮 */}
       <div className="scene-frame" style={{ transform: `translate(${cox}px, 0px) scale(${cover})` }}>
         <img className="scene-bg" src="/classroom-bg.png" alt="智慧教室场景" />
-        <div className="scene-ui">
-          <button className="glass-nav left" onClick={() => go(-1)} aria-label="上一个风格" title="上一个风格（←）">
-            <Icon name="chevron-left" size={42} strokeWidth={2.3} />
-          </button>
-          <button className="glass-nav right" onClick={() => go(1)} aria-label="下一个风格" title="下一个风格（→）">
-            <Icon name="chevron-right" size={42} strokeWidth={2.3} />
-          </button>
-          <div className="scene-pill">
-            <span className="num">{String(index + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}</span>
-            <span>{style.name}</span>
-          </div>
+      </div>
+
+      {/* 场景控件（屏幕空间）：翻页按钮恒在画面内 + 底部风格指示 */}
+      <div className="scene-ui">
+        <button
+          className="glass-nav"
+          style={{ left: navLeft, top: navTop, width: navSize, height: navSize }}
+          onClick={() => go(-1)}
+          aria-label="上一个风格"
+          title="上一个风格（←）"
+        >
+          <Icon name="chevron-left" size={navSize * 0.42} strokeWidth={2.3} />
+        </button>
+        <button
+          className="glass-nav"
+          style={{ left: navRight, top: navTop, width: navSize, height: navSize }}
+          onClick={() => go(1)}
+          aria-label="下一个风格"
+          title="下一个风格（→）"
+        >
+          <Icon name="chevron-right" size={navSize * 0.42} strokeWidth={2.3} />
+        </button>
+        <div className="scene-pill">
+          <span className="num">{String(index + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}</span>
+          <span>{style.name}</span>
         </div>
       </div>
 
       {/* 黑板舞台：场景内嵌于白板洞，点击后 zoom 全屏 */}
       <div
-        className="board-layer"
+        className={`board-layer${zooming ? ' zoom' : ''}`}
         style={{ transform: `translate(${tx}px, ${ty}px) scale(${sx}, ${sy})` }}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
@@ -117,7 +152,7 @@ function App() {
                 <span className="num">{String(index + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}</span>
                 <span>{style.name}</span>
               </div>
-              <button className="back-chip" onClick={() => setMode('scene')} title="返回教室场景（Esc）">
+              <button className="back-chip" onClick={() => toggleMode('scene')} title="返回教室场景（Esc）">
                 <ShrinkIcon />
                 返回场景
               </button>
@@ -127,7 +162,7 @@ function App() {
           {toast && <div className="demo-toast">{toast}</div>}
 
           {!board && (
-            <div className="board-click" onClick={() => setMode('board')} role="button" aria-label="进入黑板全屏" />
+            <div className="board-click" onClick={() => toggleMode('board')} role="button" aria-label="进入黑板全屏" />
           )}
         </div>
       </div>

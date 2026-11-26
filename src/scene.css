@@ -37,16 +37,17 @@
 .scene-ui {
   position: absolute;
   inset: 0;
+  z-index: 30;
+  pointer-events: none;
   transition: opacity 0.35s var(--ease-out-soft);
 }
 .mode-board .scene-ui { opacity: 0; }
+.mode-board .scene-ui > * { pointer-events: none; }
 .scene-ui > * { pointer-events: auto; }
 
-/* Figma 切换按钮：100×100 圆形白玻璃 + 渐变白描边 + 软投影 */
+/* Figma 切换按钮：圆形白玻璃 + 渐变白描边 + 软投影；位置/尺寸由屏幕空间自适应夹取 */
 .glass-nav {
   position: absolute;
-  width: 100px;
-  height: 100px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -69,21 +70,19 @@
   box-shadow: 0 34px 70px rgba(43, 92, 153, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 .glass-nav:active { transform: scale(0.95); }
-.glass-nav.left { left: 180px; top: 320px; }
-.glass-nav.right { left: 1640px; top: 320px; }
 
-/* 场景底部风格指示 */
+/* 场景底部风格指示（屏幕空间，恒在画面内） */
 .scene-pill {
   position: absolute;
-  left: 960px;
-  top: 1006px;
+  left: 50%;
+  bottom: 20px;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 14px;
   padding: 10px 22px;
   border-radius: 999px;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 0.04em;
   color: #2f5586;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.46));
@@ -105,6 +104,9 @@
   height: 1080px;
   transform-origin: 0 0;
   z-index: 20;
+  /* 默认无过渡：resize 时与背景瞬时同步；仅模式切换 zoom 时启用过渡 */
+}
+.board-layer.zoom {
   transition: transform 0.7s var(--ease-out-soft);
 }
 .mode-scene .board-layer .stage { box-shadow: none; }
