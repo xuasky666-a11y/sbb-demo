@@ -394,7 +394,7 @@
 .fg-sep { width: 1.6px; height: 64px; background: rgba(255, 255, 255, 0.12); }
 .fg-tools { display: flex; align-items: center; gap: 40px; }
 .fg-assistant { position: relative; width: 90px; height: 90px; flex: none; cursor: pointer; }
-.fg-assistant .robot { position: absolute; left: 0.34px; top: -7.5px; width: 99.16px; height: 105px; }
+.fg-assistant .robot { position: absolute; inset: 0; width: 90px; height: 90px; }
 
 /* 瓷贴为 Figma 整块切图（渐变/图标/文字胶囊/描边已焙入），单层 img，无 backdrop-filter */
 .fg-tile {
@@ -412,14 +412,7 @@
   inset: 0;
   width: 90px;
   height: 90px;
-  max-width: none; /* 覆盖 preflight 的 max-width:100%，允许 SVG 画布溢出命中区 */
+  max-width: none; /* 覆盖 preflight 的 max-width:100% */
   filter: drop-shadow(0 4px 40px rgba(26, 23, 23, 0.08));
 }
-/* 下课瓷贴为 SVG 切图（PNG 导出丢双层 fill）：170 画布含焙入阴影，偏移对齐 90 命中区 */
-.fg-tile img.full {
-  left: -40px;
-  top: -36px;
-  width: 170px;
-  height: 170px;
-  filter: none;
-}
+/* 下课瓷贴与智能体头像均为用户提供的紧密切图（180×180 @2x），与其他瓷贴同规格摆放 */

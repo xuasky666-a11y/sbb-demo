@@ -4,7 +4,7 @@ import type { ScreenProps } from './types'
 import bg from '@/assets/fusion/fusion-bg.jpg'
 import logo from '@/assets/fusion/fusion-logo.svg'
 import pdfIcon from '@/assets/fusion/fusion-pdf-56586a.png'
-import robot from '@/assets/fusion/fusion-robot-67708c.png'
+import robot from '@/assets/fusion/fusion-robot.png'
 import qr from '@/assets/fusion/fusion-qr.svg'
 import statusIcon from '@/assets/fusion/fusion-status.svg'
 import actDiscuss from '@/assets/fusion/fusion-act-discuss.svg'
@@ -28,7 +28,7 @@ import tileInteract from '@/assets/fusion/fusion-tile-interact.png'
 import tileMore from '@/assets/fusion/fusion-tile-more.png'
 import tilePlatform from '@/assets/fusion/fusion-tile-platform.png'
 import tileSettings from '@/assets/fusion/fusion-tile-settings.png'
-import tileExit from '@/assets/fusion/fusion-tile-exit.svg'
+import tileExit from '@/assets/fusion/fusion-tile-exit.png'
 import './fusion.css'
 
 const FILES = [
@@ -208,7 +208,7 @@ export function FusionGlass({ onAction }: ScreenProps) {
             <img src={tileSettings} alt="" />
           </button>
           <button className="fg-tile tap" onClick={() => onAction('下课')} aria-label="下课">
-            <img className="full" src={tileExit} alt="" />
+            <img src={tileExit} alt="" />
           </button>
         </div>
       </footer>
