@@ -1,4 +1,4 @@
-/* ===== 风格五 · 深空蓝 ===== */
+/* ===== 深空蓝 ===== */
 .theme-deep {
   --nav-bg: rgba(16, 30, 60, 0.5);
   --nav-fg: rgba(230, 240, 255, 0.95);
@@ -8,8 +8,8 @@
   --nav-hover-bg: rgba(30, 55, 105, 0.6);
   --dock-fg: rgba(230, 240, 255, 0.92);
   --dock-exit: #ffffff;
-  --dock-sep: rgba(140, 180, 255, 0.35);
-  --dock-hover: rgba(90, 140, 230, 0.2);
+  --dock-sep: rgba(255, 255, 255, 0.16);
+  --dock-hover: rgba(255, 255, 255, 0.08);
   --back-left: 130px;
   --back-bottom: 48px;
 }
@@ -22,9 +22,9 @@
   align-items: center;
   color: #eef4ff;
   background:
-    radial-gradient(1500px 900px at 72% 18%, #14336e 0%, transparent 60%),
-    radial-gradient(1300px 900px at 18% 88%, #0d3a5c 0%, transparent 55%),
-    linear-gradient(150deg, #081431 0%, #0a1c44 50%, #071026 100%);
+    radial-gradient(1100px 800px at 0% 100%, rgba(8, 108, 168, 0.62) 0%, transparent 62%),
+    radial-gradient(1500px 950px at 88% 4%, rgba(48, 88, 155, 0.5) 0%, transparent 62%),
+    linear-gradient(160deg, #04163c 0%, #041a41 48%, #031949 100%);
 }
 
 /* 星点 */
@@ -47,18 +47,9 @@
     1340px 880px 0 0 rgba(255,255,255,.2), 1650px 780px 0 0 rgba(255,255,255,.3),
     1850px 920px 0 0 rgba(255,255,255,.22), 60px 300px 0 0 rgba(255,255,255,.3),
     1060px 250px 0 0 rgba(255,255,255,.3), 1520px 300px 0 0 rgba(255,255,255,.18);
-  animation: twinkle 5s ease-in-out infinite alternate;
+  animation: deep-twinkle 5s ease-in-out infinite alternate;
 }
-@keyframes twinkle { from { opacity: 0.7; } to { opacity: 1; } }
-
-/* 底部极光 */
-.deep-glow {
-  position: absolute;
-  left: 0; right: 0; bottom: -220px;
-  height: 480px;
-  background: radial-gradient(900px 320px at 50% 100%, rgba(30, 120, 220, 0.35), transparent 70%);
-  pointer-events: none;
-}
+@keyframes deep-twinkle { from { opacity: 0.3; } to { opacity: 0.55; } }
 
 /* --- 顶栏 --- */
 .deep-header {
@@ -71,66 +62,57 @@
 .deep-cast {
   display: flex; align-items: center; gap: 14px;
   padding: 12px 24px;
-  border-radius: 16px;
-  background: rgba(20, 40, 85, 0.5);
-  border: 1px solid rgba(120, 170, 255, 0.28);
-  box-shadow: inset 0 1px 0 rgba(160, 200, 255, 0.18), 0 8px 22px rgba(0, 5, 20, 0.35);
+  border-radius: 12px;
+  background: rgba(8, 18, 38, 0.55);
+  border: 1px solid rgba(130, 170, 255, 0.22);
+  box-shadow: inset 0 1px 0 rgba(160, 200, 255, 0.12), 0 8px 22px rgba(0, 5, 20, 0.35);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   font-size: 16px; letter-spacing: 0.12em; color: rgba(190, 215, 250, 0.85);
 }
 .deep-cast strong {
-  font-size: 28px; font-weight: 700; letter-spacing: 0.24em; color: #fff;
-  text-shadow: 0 0 14px rgba(120, 190, 255, 0.8);
+  font-size: 24px; font-weight: 700; letter-spacing: 0.18em; color: #fff;
 }
 .deep-cast:hover { background: rgba(30, 58, 115, 0.6); }
 
 /* --- 时钟 --- */
-.deep-clock { margin-top: 64px; display: flex; flex-direction: column; align-items: center; }
+.deep-clock { margin-top: 120px; display: flex; flex-direction: column; align-items: center; }
 .deep-time {
   font-family: "SF Pro Display", "Helvetica Neue", system-ui;
-  font-size: 168px; font-weight: 700; line-height: 1;
+  font-size: 150px; font-weight: 300; line-height: 1;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.03em;
-  text-shadow: 0 8px 44px rgba(70, 140, 255, 0.4);
+  letter-spacing: 0.02em;
 }
 .deep-time span { opacity: 0.65; }
 .deep-date {
-  margin-top: 32px;
-  font-size: 24px; letter-spacing: 0.34em; color: rgba(200, 220, 250, 0.85);
+  margin-top: 20px;
+  font-size: 28px; letter-spacing: 0.1em; color: rgba(225, 238, 255, 0.9);
 }
 
 /* --- 核心应用 --- */
-.deep-apps { margin-top: 80px; display: flex; gap: 88px; }
-.deep-app { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.deep-apps { margin-top: 48px; display: flex; gap: 112px; }
+.deep-app { display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .deep-tile {
-  width: 164px; height: 164px;
-  border-radius: 32px;
   display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(180deg, rgba(70, 110, 190, 0.22), rgba(20, 40, 85, 0.35));
-  border: 1px solid rgba(130, 175, 255, 0.24);
-  box-shadow: inset 0 1px 0 rgba(170, 205, 255, 0.25), 0 16px 36px rgba(0, 5, 20, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: transform 0.24s var(--ease-out-soft), box-shadow 0.24s, border-color 0.24s;
+  filter: drop-shadow(0 18px 34px rgba(0, 8, 25, 0.5));
+  transition: transform 0.24s var(--ease-out-soft), filter 0.24s;
 }
 .deep-app:hover .deep-tile {
   transform: translateY(-6px);
-  border-color: rgba(150, 195, 255, 0.55);
-  box-shadow: inset 0 1px 0 rgba(170, 205, 255, 0.35), 0 24px 50px rgba(0, 10, 30, 0.5), 0 0 30px rgba(70, 140, 255, 0.25);
+  filter: drop-shadow(0 26px 44px rgba(0, 10, 30, 0.55)) drop-shadow(0 0 26px rgba(70, 140, 255, 0.35));
 }
 .deep-app:active .deep-tile { transform: scale(0.95); }
-.deep-app-label { font-size: 24px; font-weight: 500; letter-spacing: 0.16em; color: rgba(225, 238, 255, 0.92); }
+.deep-app-label { font-size: 26px; font-weight: 600; letter-spacing: 0.08em; color: rgba(238, 244, 255, 0.95); }
 
 /* --- 底部 Dock --- */
 .deep-dock-wrap { margin-top: auto; margin-bottom: 48px; }
 .deep-dock {
   display: flex; align-items: center;
   padding: 12px 20px;
-  border-radius: 24px;
-  background: rgba(16, 32, 68, 0.55);
-  border: 1px solid rgba(120, 170, 255, 0.24);
-  box-shadow: inset 0 1px 0 rgba(160, 200, 255, 0.2), 0 16px 40px rgba(0, 5, 20, 0.45);
+  border-radius: 16px;
+  background: rgba(15, 19, 27, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }

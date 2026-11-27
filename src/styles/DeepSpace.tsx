@@ -5,14 +5,13 @@ import { useClock } from '@/lib/useClock'
 import { CORE_APPS, type ScreenProps } from './types'
 import './deepspace.css'
 
-/** 风格五 · 深空蓝：参考原型的现代深色方向，星空 + 暗玻璃 */
+/** 深空蓝：干净深蓝渐变 + 左下青色光晕，细体白时钟与裸糖果图标 */
 export function DeepSpace({ onAction }: ScreenProps) {
   const { hh, mm, date, week } = useClock()
 
   return (
     <div className="deep">
       <div className="deep-stars" />
-      <div className="deep-glow" />
       <div className="noise-layer" style={{ opacity: 0.035 }} />
 
       <header className="deep-header">
@@ -34,7 +33,7 @@ export function DeepSpace({ onAction }: ScreenProps) {
         {CORE_APPS.map(app => (
           <button key={app.key} className="deep-app tap" onClick={() => onAction(app.label)}>
             <span className="deep-tile">
-              <CoreIcon name={app.key} size={104} />
+              <CoreIcon name={app.key} size={128} />
             </span>
             <span className="deep-app-label">{app.label}</span>
           </button>
