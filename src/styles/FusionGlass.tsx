@@ -69,9 +69,11 @@ export function FusionGlass({ onAction }: ScreenProps) {
       <header className="fg-header">
         <button className="fg-brand tap" onClick={() => onAction('超级黑板')}>
           <img className="fg-logo" src={logo} alt="超级黑板" />
-          <span className="fg-brand-name">超级黑板</span>
+          <span className="fg-brand-text">
+            <span className="fg-brand-name">超级黑板</span>
+            <span className="fg-ver">V5.0.0</span>
+          </span>
         </button>
-        <span className="fg-ver">V1.0.0</span>
         <button className="fg-cast tap" onClick={() => onAction('投屏邀请码')}>
           <span className="fg-cast-label">投屏邀请码</span>
           <span className="fg-cast-code">HYUI</span>

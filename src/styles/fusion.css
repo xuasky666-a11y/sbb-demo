@@ -32,6 +32,7 @@
   align-items: center;
   justify-content: space-between;
   height: 50px;
+  padding: 0 120px; /* Figma #23:1825：logo 与面板左缘对齐（50+120=170） */
   flex: none;
 }
 .fg-brand {
@@ -41,20 +42,18 @@
   filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
 }
 .fg-logo { width: 40px; height: 40px; border-radius: 8.53px; }
+.fg-brand-text { display: flex; align-items: center; gap: 10px; padding-top: 4px; }
 .fg-brand-name {
-  padding-top: 4px;
   font-family: "FZZhengHeiS-M-GB", "PingFang SC", sans-serif;
   font-size: 30px;
   letter-spacing: 0.0667em;
   text-shadow: 0 2px 4px rgba(0, 26, 77, 0.4);
 }
 .fg-ver {
-  position: absolute;
-  left: 52px;
-  top: 49px;
   font-size: 20px;
+  line-height: 1;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.7);
   text-shadow: 0 0 4px rgba(0, 26, 77, 0.4);
 }
 .fg-cast {
@@ -159,8 +158,7 @@
   transition: background 0.2s;
 }
 .fg-tabs button.on {
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+  background: rgba(128, 149, 255, 0.16); /* Figma 选中态紫调背景 */
 }
 .fg-tabs.text { height: auto; align-items: center; }
 .fg-tabs.text button {
@@ -170,7 +168,7 @@
   font-size: 16px;
   color: rgba(255, 255, 255, 0.7);
 }
-.fg-tabs.text button.on { color: #fff; background: rgba(255, 255, 255, 0.16); }
+.fg-tabs.text button.on { color: #fff; background: rgba(128, 149, 255, 0.16); }
 
 /* ---------- 课件列 ---------- */
 .fg-col-course { width: 510px; flex: none; --bgx: -170px; --bgy: -160px; }
@@ -194,13 +192,13 @@
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
-.fg-source button.on { background: rgba(255, 255, 255, 0.16); color: #fff; }
-.fg-files { display: flex; flex-direction: column; gap: 16px; }
+.fg-source button.on { background: rgba(128, 149, 255, 0.16); color: #fff; }
+.fg-files { display: flex; flex-direction: column; gap: 20px; } /* Figma #9:6030 gap 20 */
 .fg-file {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 22px 16px;
+  padding: 24px 16px; /* Figma EL-8653395d：上下 24 */
   border-radius: 24px;
   background: rgba(128, 149, 255, 0.1);
   text-align: left;
@@ -213,13 +211,13 @@
 .fg-file-title {
   font-size: 24px;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.4; /* Figma style_c1e4ae10 1.4em */
   color: rgba(255, 255, 255, 0.9);
   white-space: nowrap; /* Figma：标题单行省略 */
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.fg-file-meta { display: flex; align-items: center; gap: 20px; font-size: 17px; line-height: 1.2; }
+.fg-file-meta { display: flex; align-items: center; gap: 20px; font-size: 17px; line-height: 1.3; }
 .fg-file-meta .m { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
 .fg-file-meta .div { width: 1px; height: 11.15px; background: rgba(255, 255, 255, 0.2); }
 
@@ -279,7 +277,7 @@
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 /* Figma：面板级绝对定位子元素，横向充满整个白板、贴底（不嵌套在时钟组件内） */
-.fg-track { position: absolute; left: 0; right: 0; bottom: 0; height: 18px; background: #FFAD33; }
+.fg-track { position: absolute; left: 0; right: 0; bottom: 0; height: 16px; background: #FFAD33; }
 .fg-thumb {
   position: absolute;
   left: 400px;
@@ -406,16 +404,22 @@
   flex: none;
   isolation: isolate; /* 隔离合成层，避免底栏 hover 污染上方面板的玻璃采样 */
 }
-.fg-sep { width: 1.6px; height: 64px; background: rgba(255, 255, 255, 0.12); }
+.fg-sep { width: 1.6px; height: 60px; background: rgba(255, 255, 255, 0.12); }
 .fg-tools { display: flex; align-items: center; gap: 40px; }
 .fg-assistant { position: relative; width: 90px; height: 90px; flex: none; cursor: pointer; }
-.fg-assistant .robot { position: absolute; inset: 0; width: 90px; height: 90px; }
-
-/* 瓷贴为 Figma 整块切图（渐变/图标/文字胶囊/描边已焙入），单层 img，无 backdrop-filter */
-.fg-tile {
-  position: relative;
+.fg-assistant .robot {
+  position: absolute;
+  inset: 0;
   width: 90px;
   height: 90px;
+  filter: drop-shadow(0 4px 40px rgba(26, 23, 23, 0.08)); /* 切图导出时隐藏了投影，代码补回 */
+}
+
+/* 瓷贴为用户提供的整块切图（160×160 @2x，投影导出时隐藏），单层 img，无 backdrop-filter */
+.fg-tile {
+  position: relative;
+  width: 80px; /* Figma 新尺寸 80×80 */
+  height: 80px;
   flex: none;
   cursor: pointer;
   transition: transform 0.22s var(--ease-out-soft);
@@ -425,9 +429,9 @@
 .fg-tile img {
   position: absolute;
   inset: 0;
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   max-width: none; /* 覆盖 preflight 的 max-width:100% */
-  filter: drop-shadow(0 4px 40px rgba(26, 23, 23, 0.08));
+  filter: drop-shadow(0 3.56px 35.56px rgba(26, 23, 23, 0.08)); /* Figma 投影补回 */
 }
-/* 下课瓷贴与智能体头像均为用户提供的紧密切图（180×180 @2x），与其他瓷贴同规格摆放 */
+/* 下课瓷贴同 80×80（180×180 切图缩放）；智能体头像保持 90×90 */
