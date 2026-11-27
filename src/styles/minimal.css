@@ -103,8 +103,59 @@
 }
 .mini-app:hover .mini-underline { width: 100%; }
 
-/* --- 底部菜单（减法·统一快捷栏） --- */
+/* --- 底部菜单（与核心应用同语言：发丝线规线带 +  mono 序号 + 蓝色下划线） --- */
 .mini-dock {
   margin-top: auto; margin-bottom: 64px;
   display: flex;
 }
+.theme-mini .mini-dock .quick-dock {
+  counter-reset: qd;
+  gap: 0;
+  border-top: 1px solid rgba(23, 24, 26, 0.18);
+  border-bottom: 1px solid rgba(23, 24, 26, 0.18);
+  background: rgba(255, 255, 255, 0.4);
+}
+.theme-mini .qd-item {
+  counter-increment: qd;
+  position: relative;
+  height: auto;
+  padding: 14px 36px 16px;
+  gap: 8px;
+  border-radius: 0;
+  transition: background 0.25s;
+}
+.theme-mini .qd-item + .qd-item { border-left: 1px solid rgba(23, 24, 26, 0.18); }
+.theme-mini .qd-item::before {
+  content: counter(qd, decimal-leading-zero);
+  font-family: "SF Mono", "Menlo", monospace;
+  font-size: 10px; letter-spacing: 0.2em; color: #98968e;
+  transition: color 0.25s;
+}
+.theme-mini .qd-icon { width: 22px; height: 22px; opacity: 0.85; }
+.theme-mini .qd-label {
+  height: 12px; line-height: 12px;
+  font-size: 12px; letter-spacing: 0.3em; text-indent: 0.3em;
+  opacity: 0.8; white-space: nowrap;
+}
+.theme-mini .qd-item::after {
+  content: "";
+  position: absolute; left: 50%; bottom: -1px;
+  width: 0; height: 2px;
+  background: #2440ff;
+  transform: translateX(-50%);
+  transition: width 0.3s var(--ease-out-soft);
+}
+.theme-mini .qd-item:hover { background: rgba(255, 255, 255, 0.85); }
+.theme-mini .qd-item:hover::before { color: #2440ff; }
+.theme-mini .qd-item:hover::after { width: 100%; }
+.theme-mini .qd-item:active { transform: none; background: rgba(23, 24, 26, 0.05); }
+.theme-mini .qd-sep {
+  align-self: stretch;
+  width: 1px; height: auto; margin: 0;
+  background: rgba(23, 24, 26, 0.18);
+}
+.theme-mini .qd-sep + .qd-item { border-left: none; }
+.theme-mini .qd-item.exit { color: #d43a24; }
+.theme-mini .qd-item.exit::before { color: #d43a24; opacity: 0.7; }
+.theme-mini .qd-item.exit::after { background: #d43a24; }
+.theme-mini .qd-item.exit:hover { background: rgba(212, 58, 36, 0.06); }

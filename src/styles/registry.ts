@@ -23,7 +23,7 @@ export const STYLES: StyleDef[] = [
   { id: 'chalk', name: '超写实黑板', en: 'Chalkboard', component: Chalkboard },
   { id: 'deep', name: '深空蓝', en: 'Deep Space', component: DeepSpace },
   { id: 'skeu', name: '拟物质感', en: 'Skeuomorphic', component: Skeuomorphic },
-  { id: 'mini', name: '极简', en: 'Minimal', component: Minimal },
   { id: 'ink', name: '国风水墨', en: 'Ink Wash', component: InkWash },
   { id: 'pixel', name: '像素世界', en: 'Pixel World', component: Pixel },
+  { id: 'mini', name: '极简', en: 'Minimal', component: Minimal },
 ]
