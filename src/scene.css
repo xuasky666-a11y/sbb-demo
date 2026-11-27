@@ -181,10 +181,10 @@
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
 }
 
-/* 全屏返回场景 */
+/* 全屏返回场景：左下角，与底部菜单栏垂直居中对齐（不遮 logo） */
 .back-chip {
   position: absolute;
-  top: 24px;
+  bottom: 74.5px;
   left: 24px;
   z-index: 55;
   display: flex;
@@ -202,6 +202,7 @@
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.25s, transform 0.25s var(--ease-out-soft);
-  animation: toast-in 0.4s var(--ease-out-soft) both;
+  /* 不能用 toast-in：其终帧 translate(-50%,0) 会把按钮左移半宽裁出屏幕 */
+  animation: hover-in 0.25s var(--ease-out-soft) both;
 }
 .back-chip:hover { background: var(--nav-hover-bg); transform: scale(1.04); }
