@@ -112,6 +112,7 @@
 .clay-app.cast { background: #b5d4f5; color: #35619e; }
 .clay-app.live { background: #d4c4f0; color: #6a4fa8; }
 .clay-app-icon { filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.45)); }
+.clay-app-icon img { width: 96px; height: 96px; }
 .clay-app-label { font-size: 20px; font-weight: 800; letter-spacing: 0.14em; text-indent: 0.14em; }
 
 /* --- 底部黏土 Dock --- */

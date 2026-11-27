@@ -150,6 +150,7 @@
 }
 .glass-app:active { transform: scale(0.96); }
 .glass-app-icon { display: flex; }
+.glass-app-icon img { width: 100px; height: 100px; }
 .glass-app-label { font-size: 20px; font-weight: 600; letter-spacing: 0.14em; }
 
 /* --- 底部 Dock --- */

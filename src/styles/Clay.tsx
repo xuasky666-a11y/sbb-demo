@@ -1,9 +1,15 @@
-import { ClayIcon } from '@/components/ClayIcon'
 import { QuickDock } from '@/components/QuickDock'
 import brandMark from '@/assets/brand-mark.png'
+import coreCourseware from '@/assets/core-clay-courseware.png'
+import coreBoard from '@/assets/core-clay-board.png'
+import coreCast from '@/assets/core-clay-cast.png'
+import coreLive from '@/assets/core-clay-live.png'
 import { useClock } from '@/lib/useClock'
 import { CORE_APPS, type ScreenProps } from './types'
 import './clay.css'
+
+/** 核心功能图标：AI 生图 PNG（@2x 192，黏土立体物件） */
+const CORE_ICONS = { courseware: coreCourseware, board: coreBoard, cast: coreCast, live: coreLive } as const
 
 /** 风格九 · 黏土质感：奶油底色 + 软糖立体卡片 + 圆润厚描边 */
 export function Clay({ onAction }: ScreenProps) {
@@ -39,7 +45,7 @@ export function Clay({ onAction }: ScreenProps) {
       <section className="clay-apps">
         {CORE_APPS.map(app => (
           <button key={app.key} className={`clay-app ${app.key} tap`} onClick={() => onAction(app.label)}>
-            <span className="clay-app-icon"><ClayIcon name={app.key} size={96} /></span>
+            <span className="clay-app-icon"><img src={CORE_ICONS[app.key]} alt="" draggable={false} /></span>
             <span className="clay-app-label">{app.label}</span>
           </button>
         ))}

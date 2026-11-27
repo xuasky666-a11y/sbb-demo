@@ -1,9 +1,15 @@
-import { SkeuIcon } from '@/components/SkeuIcon'
 import { QuickDock } from '@/components/QuickDock'
 import brandMark from '@/assets/brand-mark.png'
+import coreCourseware from '@/assets/core-skeu-courseware.png'
+import coreBoard from '@/assets/core-skeu-board.png'
+import coreCast from '@/assets/core-skeu-cast.png'
+import coreLive from '@/assets/core-skeu-live.png'
 import { useClock } from '@/lib/useClock'
 import { CORE_APPS, type ScreenProps } from './types'
 import './skeuomorphic.css'
+
+/** 核心功能图标：AI 生图 PNG（@2x 224，投影由 .skeu-tile 底座承担） */
+const CORE_ICONS = { courseware: coreCourseware, board: coreBoard, cast: coreCast, live: coreLive } as const
 
 /** 风格一 · 拟物质感：翻页钟、压印金属、糖果高光图标 */
 export function Skeuomorphic({ onAction }: ScreenProps) {
@@ -40,7 +46,7 @@ export function Skeuomorphic({ onAction }: ScreenProps) {
         {CORE_APPS.map(app => (
           <button key={app.key} className="skeu-app tap" onClick={() => onAction(app.label)}>
             <span className="skeu-tile">
-              <SkeuIcon name={app.key} size={112} />
+              <img src={CORE_ICONS[app.key]} alt="" draggable={false} />
             </span>
             <span className="skeu-app-label">{app.label}</span>
           </button>

@@ -154,6 +154,7 @@
     0 4px 8px rgba(95, 85, 60, 0.16);
   transition: transform 0.22s var(--ease-out-soft), box-shadow 0.22s;
 }
+.skeu-tile img { width: 112px; height: 112px; }
 .skeu-app:hover .skeu-tile {
   transform: translateY(-6px);
   box-shadow:

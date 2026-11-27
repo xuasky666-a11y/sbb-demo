@@ -1,9 +1,15 @@
-import { GlassIcon } from '@/components/GlassIcon'
 import { QuickDock } from '@/components/QuickDock'
 import brandMark from '@/assets/brand-mark.png'
+import coreCourseware from '@/assets/core-glass-courseware.png'
+import coreBoard from '@/assets/core-glass-board.png'
+import coreCast from '@/assets/core-glass-cast.png'
+import coreLive from '@/assets/core-glass-live.png'
 import { useClock } from '@/lib/useClock'
 import { CORE_APPS, type ScreenProps } from './types'
 import './liquidglass.css'
+
+/** 核心功能图标：AI 生图 PNG（@2x 200，visionOS 磨砂玻璃砖） */
+const CORE_ICONS = { courseware: coreCourseware, board: coreBoard, cast: coreCast, live: coreLive } as const
 
 /** 风格二 · 苹果流体玻璃：亮色丝绸光斑 + 高透白玻璃面板 */
 export function LiquidGlass({ onAction }: ScreenProps) {
@@ -36,7 +42,7 @@ export function LiquidGlass({ onAction }: ScreenProps) {
       <section className="glass-apps">
         {CORE_APPS.map(app => (
           <button key={app.key} className="glass-app tap" onClick={() => onAction(app.label)}>
-            <span className="glass-app-icon"><GlassIcon name={app.key} size={100} /></span>
+            <span className="glass-app-icon"><img src={CORE_ICONS[app.key]} alt="" draggable={false} /></span>
             <span className="glass-app-label">{app.label}</span>
           </button>
         ))}
