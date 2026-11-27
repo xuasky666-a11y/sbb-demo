@@ -94,8 +94,8 @@
 .skeu-flips { display: flex; align-items: center; gap: 24px; }
 .skeu-flip {
   position: relative;
-  width: 172px; height: 208px;
-  border-radius: 16px;
+  width: 208px; height: 208px;
+  border-radius: 18px;
   display: flex; align-items: center; justify-content: center;
   background: linear-gradient(180deg, #4a4e55 0%, #33363c 49%, #24262b 51%, #2e3137 100%);
   box-shadow:
@@ -139,35 +139,45 @@
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
-/* --- 核心应用 --- */
-.skeu-apps { margin-top: 80px; display: flex; gap: 112px; }
-.skeu-app { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+/* --- 核心应用：实体键帽底座（有厚度/侧壁/按压反馈）+ 3D 物件 --- */
+.skeu-apps { margin-top: 72px; display: flex; gap: 104px; }
+.skeu-app { display: flex; flex-direction: column; align-items: center; gap: 26px; }
 .skeu-tile {
-  width: 176px; height: 176px;
-  border-radius: 32px;
+  width: 184px; height: 184px;
+  border-radius: 40px;
   display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(180deg, #fbfaf7 0%, #ece8df 60%, #ddd8cc 100%);
+  background:
+    radial-gradient(120% 90% at 30% 16%, #ffffff 0%, #f6f2e8 40%, #e6e0d1 76%, #d5cebc 100%);
   box-shadow:
-    inset 0 2px 2px rgba(255, 255, 255, 0.95),
-    inset 0 -3px 6px rgba(130, 120, 95, 0.22),
-    0 16px 32px rgba(95, 85, 60, 0.26),
-    0 4px 8px rgba(95, 85, 60, 0.16);
-  transition: transform 0.22s var(--ease-out-soft), box-shadow 0.22s;
+    inset 0 2px 3px rgba(255, 255, 255, 0.95),
+    inset 0 -7px 14px rgba(130, 120, 95, 0.3),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.55),
+    0 8px 0 #cfc8b6,
+    0 10px 0 #b3ab97,
+    0 13px 3px rgba(120, 110, 88, 0.45),
+    0 26px 38px rgba(95, 85, 60, 0.32);
+  transition: transform 0.16s var(--ease-out-soft), box-shadow 0.16s;
 }
-.skeu-tile img { width: 112px; height: 112px; }
+.skeu-tile img { width: 128px; height: 128px; }
 .skeu-app:hover .skeu-tile {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   box-shadow:
-    inset 0 2px 2px rgba(255, 255, 255, 0.95),
-    inset 0 -3px 6px rgba(130, 120, 95, 0.22),
-    0 26px 48px rgba(95, 85, 60, 0.32),
-    0 6px 12px rgba(95, 85, 60, 0.18);
+    inset 0 2px 3px rgba(255, 255, 255, 0.95),
+    inset 0 -7px 14px rgba(130, 120, 95, 0.3),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.55),
+    0 12px 0 #cfc8b6,
+    0 14px 0 #b3ab97,
+    0 17px 3px rgba(120, 110, 88, 0.45),
+    0 34px 48px rgba(95, 85, 60, 0.36);
 }
 .skeu-app:active .skeu-tile {
-  transform: translateY(1px) scale(0.97);
+  transform: translateY(7px);
   box-shadow:
-    inset 0 3px 8px rgba(110, 100, 75, 0.3),
-    0 6px 14px rgba(95, 85, 60, 0.2);
+    inset 0 3px 8px rgba(110, 100, 75, 0.32),
+    inset 0 -3px 6px rgba(130, 120, 95, 0.2),
+    0 2px 0 #cfc8b6,
+    0 3px 0 #b3ab97,
+    0 8px 14px rgba(95, 85, 60, 0.24);
 }
 .skeu-app-label {
   font-size: 24px; font-weight: 600; letter-spacing: 0.12em;

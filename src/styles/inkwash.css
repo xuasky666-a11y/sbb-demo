@@ -27,7 +27,7 @@
   font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
 }
 
-/* --- 远山 / 朱日 / 竖排诗句 --- */
+/* --- 远山 / 朱日 --- */
 .ink-mountains {
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -42,16 +42,6 @@
   background: radial-gradient(circle, rgba(196, 74, 52, 0.5) 0%, rgba(196, 74, 52, 0.18) 62%, transparent 72%);
   filter: blur(1px);
 }
-.ink-poem {
-  position: absolute;
-  left: 96px; top: 260px;
-  writing-mode: vertical-rl;
-  font-size: 30px;
-  letter-spacing: 0.5em;
-  color: rgba(60, 66, 62, 0.4);
-  pointer-events: none;
-}
-.ink-poem.right { left: auto; right: 96px; top: 320px; }
 
 /* --- 顶栏 --- */
 .ink-header {
@@ -87,10 +77,14 @@
     linear-gradient(160deg, #c8452c, #a93420);
   box-shadow: inset 0 0 0 3px rgba(246, 241, 227, 0.85), inset 0 0 0 5px rgba(169, 52, 32, 0.9), 0 6px 16px rgba(150, 50, 30, 0.35);
   color: #f6f1e3;
-  font-family: "Songti SC", "STSong", serif;
-  font-size: 32px; font-weight: 700;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px; font-weight: 700; line-height: 1;
   transform: rotate(2deg);
   transition: transform 0.25s var(--ease-out-soft);
+}
+.ink-seal span {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
 }
 .ink-cast:hover .ink-seal { transform: rotate(-2deg) scale(1.05); }
 
@@ -149,7 +143,9 @@
   display: flex; align-items: center;
   height: 96px;
   padding: 0 24px;
-  background: linear-gradient(180deg, #fbf7ec, #f3edda);
+  background: linear-gradient(180deg, rgba(251, 247, 236, 0.82), rgba(243, 237, 218, 0.78));
+  backdrop-filter: blur(14px) saturate(1.05);
+  -webkit-backdrop-filter: blur(14px) saturate(1.05);
   border-top: 1.5px solid rgba(90, 96, 90, 0.3);
   border-bottom: 1.5px solid rgba(90, 96, 90, 0.3);
   box-shadow: 0 14px 30px rgba(70, 76, 70, 0.16), inset 0 0 24px rgba(180, 168, 130, 0.22);

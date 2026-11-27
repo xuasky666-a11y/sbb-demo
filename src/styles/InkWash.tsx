@@ -33,8 +33,6 @@ export function InkWash({ onAction }: ScreenProps) {
       </svg>
       <div className="ink-sun" />
       <div className="noise-layer" style={{ opacity: 0.06 }} />
-      <div className="ink-poem">书山有路勤为径</div>
-      <div className="ink-poem right">学海无涯苦作舟</div>
 
       <header className="ink-header">
         <button className="ink-brand tap" onClick={() => onAction('超级黑板')}>
