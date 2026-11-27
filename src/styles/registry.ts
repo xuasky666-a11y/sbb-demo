@@ -6,7 +6,6 @@ import { Chalkboard } from './Chalkboard'
 import { Skeuomorphic } from './Skeuomorphic'
 import { Minimal } from './Minimal'
 import { DeepSpace } from './DeepSpace'
-import { WarmPaper } from './WarmPaper'
 import { InkWash } from './InkWash'
 import { Pixel } from './Pixel'
 
@@ -17,7 +16,7 @@ export interface StyleDef {
   component: ComponentType<ScreenProps>
 }
 
-/** 九种视觉风格，左右翻页依次切换（融合玻璃 / AI毛玻璃为用户自出设计，居前两位） */
+/** 八种视觉风格，左右翻页依次切换（融合玻璃 / AI毛玻璃为用户自出设计，居前两位） */
 export const STYLES: StyleDef[] = [
   { id: 'fusion', name: '融合玻璃', en: 'Fusion Glass', component: FusionGlass },
   { id: 'aiglass', name: 'AI毛玻璃', en: 'AI Frosted Glass', component: AiGlass },
@@ -25,7 +24,6 @@ export const STYLES: StyleDef[] = [
   { id: 'deep', name: '深空蓝', en: 'Deep Space', component: DeepSpace },
   { id: 'skeu', name: '拟物质感', en: 'Skeuomorphic', component: Skeuomorphic },
   { id: 'mini', name: '极简', en: 'Minimal', component: Minimal },
-  { id: 'warm', name: '暖木纸感', en: 'Warm Paper', component: WarmPaper },
   { id: 'ink', name: '国风水墨', en: 'Ink Wash', component: InkWash },
   { id: 'pixel', name: '像素世界', en: 'Pixel World', component: Pixel },
 ]

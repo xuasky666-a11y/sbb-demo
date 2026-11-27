@@ -99,24 +99,27 @@ export function CastObject({ size = 160 }: P) {
         </linearGradient>
       </defs>
       {/* 光束 */}
-      <path d="M88 52 L116 34 L116 78 L88 66 Z" fill="url(#pj-beam)" />
+      <path d="M96 42 L114 22 L114 72 L96 60 Z" fill="url(#pj-beam)" />
+      {/* 提手 */}
+      <path d="M40 26 q20 -16 40 0" fill="none" stroke="#33363c" strokeWidth="7" strokeLinecap="round" />
+      <path d="M40 26 q20 -16 40 0" fill="none" stroke="#6a6e76" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
       {/* 机身 */}
-      <rect x="16" y="40" width="76" height="44" rx="9" fill="url(#pj-g)" />
-      <rect x="18" y="42" width="72" height="4" rx="2" fill="#fff" opacity="0.16" />
+      <rect x="14" y="24" width="80" height="60" rx="10" fill="url(#pj-g)" />
+      <rect x="16" y="26" width="76" height="4" rx="2" fill="#fff" opacity="0.16" />
       {/* 散热格栅 */}
-      <g stroke="#1c1e22" strokeWidth="2.4" strokeLinecap="round">
-        <line x1="26" y1="52" x2="26" y2="72" /><line x1="33" y1="52" x2="33" y2="72" /><line x1="40" y1="52" x2="40" y2="72" />
+      <g stroke="#1c1e22" strokeWidth="2.6" strokeLinecap="round">
+        <line x1="24" y1="40" x2="24" y2="72" /><line x1="32" y1="40" x2="32" y2="72" /><line x1="40" y1="40" x2="40" y2="72" />
       </g>
       {/* 琥珀指示灯 */}
-      <circle cx="52" cy="50" r="3" fill="#ffc76a" />
-      <circle cx="52" cy="50" r="5" fill="#ffc76a" opacity="0.25" />
+      <circle cx="50" cy="36" r="3.2" fill="#ffc76a" />
+      <circle cx="50" cy="36" r="5.5" fill="#ffc76a" opacity="0.25" />
       {/* 黄铜镜头 */}
-      <circle cx="76" cy="62" r="17" fill="url(#pj-b)" />
-      <circle cx="76" cy="62" r="12" fill="url(#pj-lens)" />
-      <circle cx="71" cy="57" r="4" fill="#fff" opacity="0.65" />
+      <circle cx="78" cy="54" r="21" fill="url(#pj-b)" />
+      <circle cx="78" cy="54" r="15" fill="url(#pj-lens)" />
+      <circle cx="72" cy="48" r="5" fill="#fff" opacity="0.65" />
       {/* 支脚 */}
-      <rect x="26" y="84" width="10" height="7" rx="2" fill="#2a2c31" />
-      <rect x="66" y="84" width="10" height="7" rx="2" fill="#2a2c31" />
+      <rect x="24" y="84" width="12" height="9" rx="2.5" fill="#2a2c31" />
+      <rect x="68" y="84" width="12" height="9" rx="2.5" fill="#2a2c31" />
     </svg>
   )
 }
