@@ -2,9 +2,9 @@ import type { ComponentType } from 'react'
 import type { ScreenProps } from './types'
 import { FusionGlass } from './FusionGlass'
 import { AiGlass } from './AiGlass'
+import { Chalkboard } from './Chalkboard'
 import { Skeuomorphic } from './Skeuomorphic'
 import { Minimal } from './Minimal'
-import { Chalkboard } from './Chalkboard'
 import { DeepSpace } from './DeepSpace'
 import { WarmPaper } from './WarmPaper'
 import { InkWash } from './InkWash'
@@ -22,9 +22,9 @@ export interface StyleDef {
 export const STYLES: StyleDef[] = [
   { id: 'fusion', name: '融合玻璃', en: 'Fusion Glass', component: FusionGlass },
   { id: 'aiglass', name: 'AI毛玻璃', en: 'AI Frosted Glass', component: AiGlass },
+  { id: 'chalk', name: '超写实黑板', en: 'Chalkboard', component: Chalkboard },
   { id: 'skeu', name: '拟物质感', en: 'Skeuomorphic', component: Skeuomorphic },
   { id: 'mini', name: '极简', en: 'Minimal', component: Minimal },
-  { id: 'chalk', name: '超写实黑板', en: 'Chalkboard', component: Chalkboard },
   { id: 'deep', name: '深空蓝', en: 'Deep Space', component: DeepSpace },
   { id: 'warm', name: '暖木纸感', en: 'Warm Paper', component: WarmPaper },
   { id: 'ink', name: '国风水墨', en: 'Ink Wash', component: InkWash },

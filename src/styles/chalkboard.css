@@ -44,22 +44,21 @@
   color: #f3f1e7;
   overflow: hidden;
   background:
-    radial-gradient(1300px 750px at 46% 34%, #2f5747 0%, #26493c 52%, #1e3f33 100%);
+    radial-gradient(1300px 750px at 46% 34%, #357a5b 0%, #2a6449 52%, #20523c 100%);
   box-shadow:
     inset 0 0 60px rgba(0, 0, 0, 0.5),
     inset 0 4px 14px rgba(0, 0, 0, 0.55),
     0 2px 3px rgba(255, 220, 170, 0.25);
 }
-/* 板擦抹痕 */
+/* 自然窗光：左上角柔和暖光晕（漫射、无硬斜杠）+ 四周暗角 */
 .chalk-board::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    repeating-linear-gradient(104deg,
-      transparent 0 150px, rgba(255, 255, 255, 0.022) 150px 210px,
-      transparent 210px 340px, rgba(255, 255, 255, 0.016) 340px 420px);
+    radial-gradient(1000px 680px at 10% 4%, rgba(255, 246, 220, 0.12), transparent 62%),
+    radial-gradient(1400px 900px at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.22) 100%);
 }
 .chalk-smudge {
   position: absolute;
@@ -82,7 +81,7 @@
 }
 .chalk-brand { display: flex; align-items: center; gap: 16px; opacity: 0.95; }
 .chalk-logo { height: 64px; width: auto; display: block; }
-.chalk-core { filter: url(#chalk-rough) saturate(0.9); }
+.chalk-core { filter: url(#chalk-rough) saturate(0.72) brightness(1.04); }
 .chalk-cast {
   display: flex; align-items: center; gap: 16px;
   padding: 12px 24px;
@@ -93,8 +92,9 @@
   transition: background 0.2s;
 }
 .chalk-cast strong {
-  font-family: "Chalkboard SE", "Comic Sans MS", cursive;
-  font-size: 28px; letter-spacing: 0.24em;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  font-weight: 600;
+  font-size: 28px; letter-spacing: 0.22em;
   text-shadow: 0 0 3px rgba(243, 241, 231, 0.5);
 }
 .chalk-cast:hover { background: rgba(255, 255, 255, 0.07); }
@@ -102,11 +102,13 @@
 /* --- 时钟 --- */
 .chalk-clock { margin-top: 40px; display: flex; flex-direction: column; align-items: center; }
 .chalk-time {
-  font-family: "Chalkboard SE", "Comic Sans MS", cursive;
-  font-size: 158px; font-weight: 700; line-height: 1.05;
-  font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 4px rgba(243, 241, 231, 0.5), 0 0 1px rgba(243, 241, 231, 0.8);
-  opacity: 0.96;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 150px; font-weight: 600; line-height: 1.05;
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: 0.02em;
+  filter: url(#chalk-rough);
+  text-shadow: 0 0 5px rgba(243, 241, 231, 0.45), 0 0 1px rgba(243, 241, 231, 0.7);
+  opacity: 0.97;
 }
 .chalk-time span { opacity: 0.75; margin: 0 4px; }
 .chalk-underline { margin-top: 8px; opacity: 0.7; }
@@ -126,12 +128,15 @@
 .chalk-app.r3 { transform: rotate(0.9deg); }
 .chalk-app-box {
   width: 168px; height: 168px;
-  border: 3px solid rgba(243, 241, 231, 0.85);
-  border-radius: 24px;
+  border: 2px solid rgba(243, 241, 231, 0.8);
+  border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s, transform 0.22s var(--ease-out-soft);
+  background:
+    linear-gradient(rgba(243, 241, 231, 0.14), rgba(243, 241, 231, 0.14)) center / 1px 100% no-repeat,
+    linear-gradient(rgba(243, 241, 231, 0.14), rgba(243, 241, 231, 0.14)) center / 100% 1px no-repeat;
+  transition: background-color 0.2s, transform 0.22s var(--ease-out-soft);
 }
-.chalk-app:hover .chalk-app-box { background: rgba(255, 255, 255, 0.08); transform: translateY(-4px); }
+.chalk-app:hover .chalk-app-box { background-color: rgba(255, 255, 255, 0.08); transform: translateY(-4px); }
 .chalk-app:active .chalk-app-box { transform: scale(0.95); }
 .chalk-app-label {
   font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
@@ -139,15 +144,21 @@
   text-shadow: 0 0 3px rgba(243, 241, 231, 0.45);
 }
 
-/* --- 涂鸦 --- */
-.chalk-doodle { position: absolute; opacity: 0.32; pointer-events: none; }
-.chalk-doodle.plane { left: 130px; bottom: 150px; transform: rotate(-8deg); }
-.chalk-doodle.star { right: 150px; top: 170px; transform: rotate(12deg); }
-.chalk-doodle.formula {
-  left: 150px; top: 210px;
-  font-family: "Chalkboard SE", cursive;
-  font-size: 26px; transform: rotate(-5deg);
+/* --- 边缘粉笔数学（衬线斜体，淡而真实，环绕四周） --- */
+.chalk-math {
+  position: absolute;
+  pointer-events: none;
+  color: rgba(243, 241, 231, 0.9);
+  opacity: 0.2;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  font-style: italic;
 }
+.chalk-math.m-integral { left: 96px; top: 196px; font-size: 27px; transform: rotate(-3deg); }
+.chalk-math.m-curve { left: 88px; top: 300px; transform: rotate(-2deg); }
+.chalk-math.m-pythag { left: 120px; bottom: 210px; font-size: 26px; transform: rotate(2deg); }
+.chalk-math.m-trig { right: 96px; top: 200px; font-size: 26px; transform: rotate(2.5deg); }
+.chalk-math.m-geo { right: 110px; top: 300px; transform: rotate(3deg); }
+.chalk-math.m-limit { right: 100px; bottom: 214px; font-size: 24px; transform: rotate(-2deg); }
 
 /* --- 底部工具 --- */
 .chalk-dock-wrap { margin-top: auto; margin-bottom: 48px; }

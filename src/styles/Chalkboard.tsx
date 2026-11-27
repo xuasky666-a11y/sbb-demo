@@ -54,14 +54,19 @@ export function Chalkboard({ onAction }: ScreenProps) {
           ))}
         </section>
 
-        {/* 角落粉笔涂鸦 */}
-        <svg className="chalk-doodle plane chalk-rough" viewBox="0 0 64 64" width="72" height="72">
-          <path d="M6 34L58 10 40 54l-9-16zM31 38l27-28M31 38l-2 12 7-8" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+        {/* 边缘淡粉笔数学公式与几何图（写实黑板签名，环绕四周不抢中心） */}
+        <span className="chalk-math m-integral">∫ f(x) dx = F(x) + C</span>
+        <svg className="chalk-math m-curve chalk-rough" viewBox="0 0 150 90" width="150" height="90">
+          <path d="M14 10v70h128" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          <path d="M14 45c20-30 34-30 52 0s32 30 52 0" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
         </svg>
-        <svg className="chalk-doodle star chalk-rough" viewBox="0 0 48 48" width="52" height="52">
-          <path d="M24 5l5.4 12.6L43 19l-10 9.4L35.8 42 24 34.8 12.2 42 15 28.4 5 19l13.6-1.4z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+        <span className="chalk-math m-pythag">a² + b² = c²</span>
+        <span className="chalk-math m-trig">sin²θ + cos²θ = 1</span>
+        <svg className="chalk-math m-geo chalk-rough" viewBox="0 0 120 120" width="118" height="118">
+          <circle cx="60" cy="60" r="46" fill="none" stroke="currentColor" strokeWidth="1.6" />
+          <path d="M60 14L98 84H22zM60 60L60 14M60 60L98 84M60 60L22 84" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
         </svg>
-        <span className="chalk-doodle formula">E = mc²</span>
+        <span className="chalk-math m-limit">lim&#8202;(x→0)&#8202;sin&#8202;x / x = 1</span>
 
         <footer className="chalk-dock-wrap">
           <div className="chalk-dock chalk-rough">
