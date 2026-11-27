@@ -1,0 +1,179 @@
+/* ===== 风格 · AI毛玻璃（用户自出设计，Figma 23:4518 实测坐标还原） ===== */
+.theme-aiglass {
+  --nav-bg: rgba(255, 255, 255, 0.6);
+  --nav-fg: #26334d;
+  --nav-border: rgba(255, 255, 255, 0.9);
+  --nav-shadow: 0 8px 32px rgba(32, 35, 60, 0.08);
+  --nav-blur: blur(6px);
+  --nav-hover-bg: rgba(255, 255, 255, 0.8);
+  --back-left: 80px;
+  --back-bottom: 50px;
+}
+
+.ag {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #f4f8ff;
+  color: #26334d;
+}
+
+/* 背景：设计师整幅切图（径向光幕 + 弧形光带 + 地面 + 发光展台，@2x 3840） */
+.ag-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 幽灵时钟水印：D-DIN Exp Bold 200，自上而下消隐 */
+.ag-ghost {
+  position: absolute;
+  left: 680px;
+  top: 124px;
+  width: 560px;
+  height: 200px;
+  font-family: "D-DIN Exp", "DIN Alternate", "Bahnschrift", "Arial Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 200px;
+  line-height: 1em;
+  letter-spacing: 0.08em;
+  text-align: center;
+  white-space: nowrap;
+  background: linear-gradient(180deg, rgba(176, 197, 252, 0.3) 0%, rgba(176, 197, 252, 0) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 核心区背景切图：含弧形玻璃带 + 4 块展面板（@2x 3392×1188 → 1696×594）
+   原点由面板中心实测反推（95.5, 200），面板心对位 480/800/1120/1440 */
+.ag-core {
+  position: absolute;
+  left: 95.5px;
+  top: 200px;
+  width: 1696px;
+  height: 594px;
+}
+
+/* --- 顶栏：padding 50/80，logo 40 + 标题 30 + 版本 20 --- */
+.ag-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 80px;
+}
+.ag-brand { display: flex; align-items: center; gap: 12px; }
+.ag-logo { width: 40px; height: 40px; border-radius: 8.53px; }
+.ag-brand-text { display: flex; align-items: center; gap: 10px; padding-top: 4px; }
+.ag-brand-text strong {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0.0667em;
+  line-height: 1;
+  color: #000;
+}
+.ag-brand-text em {
+  font-style: normal;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  color: rgba(77, 77, 77, 0.7);
+}
+.ag-cast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 50px;
+  padding: 7.5px 20px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: background 0.25s;
+}
+.ag-cast:hover { background: rgba(255, 255, 255, 0.72); }
+.ag-cast-label { font-size: 24px; line-height: 1; color: rgba(0, 0, 0, 0.6); }
+.ag-cast-code {
+  font-family: "D-DIN Exp", "DIN Alternate", "Bahnschrift", "Arial Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: 0.0625em;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* --- 核心应用：280 面板内 120 图标（80,60）+ 26 号标签（顶 200） --- */
+.ag-apps { position: absolute; inset: 0; z-index: 5; }
+.ag-app { position: absolute; top: 361px; width: 280px; height: 280px; }
+.ag-app-icon {
+  position: absolute;
+  left: 80px;
+  top: 60px;
+  width: 120px;
+  height: 120px;
+  transition: transform 0.3s var(--ease-out-soft);
+}
+.ag-app:hover .ag-app-icon { transform: translateY(-4px); }
+.ag-app-label {
+  position: absolute;
+  left: 80px;
+  top: 200px;
+  width: 120px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.0769em;
+  line-height: 1.2;
+  color: #464d75;
+}
+
+/* --- 工具栏：白 0.6 玻璃 pill，78 高（含 1px 白边），底距 50 --- */
+.ag-toolbar {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 78px;
+  padding: 8px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid #fff;
+  box-shadow: 0 8px 32px rgba(32, 35, 60, 0.04);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.ag-collapse {
+  align-self: stretch;
+  width: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ag-collapse img { width: 12px; height: 12px; transition: transform 0.3s var(--ease-out-soft); }
+.ag-toolbar.collapsed .ag-collapse img { transform: rotate(180deg); }
+.ag-tool {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+.ag-tool:hover { background: rgba(255, 255, 255, 0.55); }
+.ag-tool img { width: 24px; height: 24px; }
+.ag-tool span { font-size: 12px; line-height: 1; color: #26334d; }
+.ag-tool.exit span { color: #d4491f; }
+.ag-sep { align-self: stretch; display: flex; align-items: center; padding: 0 8px; }
+.ag-sep::before { content: ""; width: 1px; height: 30px; background: #fff; }
