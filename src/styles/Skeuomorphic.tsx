@@ -1,11 +1,11 @@
 import { QuickDock } from '@/components/QuickDock'
-import { CoreIcon } from '@/components/CoreIcon'
+import { SKEU_OBJECTS } from '@/components/SkeuObjects'
 import brandMark from '@/assets/brand-mark.png'
 import { useClock } from '@/lib/useClock'
 import { CORE_APPS, type ScreenProps } from './types'
 import './skeuomorphic.css'
 
-/** 风格·拟物质感：方形翻页钟、实体键帽底座 + 3D 物件图标 */
+/** 风格·拟物质感：方形翻页钟 + 同材质语言的真实桌面物件（石墨/象牙/黄铜） */
 export function Skeuomorphic({ onAction }: ScreenProps) {
   const { hh, mm, date, week } = useClock()
 
@@ -39,8 +39,8 @@ export function Skeuomorphic({ onAction }: ScreenProps) {
       <section className="skeu-apps">
         {CORE_APPS.map(app => (
           <button key={app.key} className="skeu-app tap" onClick={() => onAction(app.label)}>
-            <span className="skeu-tile">
-              <CoreIcon name={app.key} size={128} />
+            <span className="skeu-object">
+              {(() => { const Obj = SKEU_OBJECTS[app.key]; return <Obj size={196} /> })()}
             </span>
             <span className="skeu-app-label">{app.label}</span>
           </button>
