@@ -190,7 +190,7 @@ button {
   width: 24px;
   height: 24px;
   background: currentColor;
-  opacity: 0.82;
+  opacity: 0.9;
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
@@ -204,7 +204,7 @@ button {
   font-size: 12px;
   letter-spacing: 0.14em;
   text-indent: 0.14em;
-  opacity: 0.6;
+  opacity: 0.72;
 }
 .qd-item:hover { background: var(--dock-hover); }
 .qd-item:active { transform: scale(0.94); }

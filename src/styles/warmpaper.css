@@ -10,6 +10,8 @@
   --dock-exit: #d4491f;
   --dock-sep: rgba(74, 58, 40, 0.25);
   --dock-hover: #f6ecd8;
+  --back-left: 130px;
+  --back-bottom: 48px;
 }
 
 .warm {
@@ -34,11 +36,11 @@
 .warm-header {
   width: 100%;
   display: flex; justify-content: space-between; align-items: flex-start;
-  padding: 50px 130px 0;
+  padding: 48px 130px 0;
 }
 .warm-brand { display: flex; align-items: center; gap: 16px; }
 .warm-badge {
-  width: 54px; height: 54px;
+  width: 56px; height: 56px;
   border-radius: 16px;
   display: block;
   border: 2.5px solid #4a3a28;
@@ -48,25 +50,25 @@
 .warm-brand-text { display: flex; flex-direction: column; gap: 2px; }
 .warm-brand-text strong {
   font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
-  font-size: 30px; font-weight: 700; letter-spacing: 0.1em;
+  font-size: 32px; font-weight: 700; letter-spacing: 0.1em;
 }
-.warm-brand-text em { font-style: normal; font-size: 13px; letter-spacing: 0.16em; color: #a08a6a; }
+.warm-brand-text em { font-style: normal; font-size: 13px; letter-spacing: 0.16em; color: #8a7452; }
 
 /* 票据投屏码 */
 .warm-ticket {
   position: relative;
   display: flex; align-items: center; gap: 16px;
-  padding: 14px 30px;
+  padding: 14px 32px;
   background: #fffdf7;
   border: 2.5px dashed #b08a54;
-  border-radius: 14px;
+  border-radius: 16px;
   box-shadow: 4px 4px 0 rgba(176, 138, 84, 0.4);
   font-size: 16px; letter-spacing: 0.14em; color: #8a6f4c;
   transition: transform 0.2s var(--ease-out-soft);
 }
 .warm-ticket strong {
   font-family: "SF Mono", "Menlo", monospace;
-  font-size: 26px; font-weight: 700; letter-spacing: 0.24em; color: #4a3a28;
+  font-size: 28px; font-weight: 700; letter-spacing: 0.24em; color: #4a3a28;
 }
 .warm-ticket .hole {
   position: absolute; top: 50%;
@@ -91,18 +93,18 @@
 }
 .warm-time span { color: #e8703a; }
 .warm-date {
-  margin-top: 28px;
+  margin-top: 32px;
   display: flex; align-items: center; gap: 12px;
   font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
-  font-size: 25px; letter-spacing: 0.24em; color: #8a6f4c;
+  font-size: 24px; letter-spacing: 0.24em; color: #8a6f4c;
 }
 .warm-date svg { color: #e8a13a; }
 
 /* --- 核心应用（贴纸卡片） --- */
-.warm-apps { margin-top: 68px; display: flex; gap: 72px; }
+.warm-apps { margin-top: 72px; display: flex; gap: 72px; }
 .warm-app {
   width: 190px;
-  padding: 30px 0 26px;
+  padding: 32px 0 24px;
   display: flex; flex-direction: column; align-items: center; gap: 20px;
   background: #fffdf7;
   border: 2.5px solid #4a3a28;
@@ -117,7 +119,7 @@
 .warm-app:hover { transform: translateY(-6px) rotate(0deg); box-shadow: 8px 9px 0 rgba(74, 58, 40, 0.85); }
 .warm-app:active { transform: translateY(1px) scale(0.97); box-shadow: 2px 2px 0 rgba(74, 58, 40, 0.85); }
 .warm-app-icon {
-  width: 116px; height: 116px;
+  width: 112px; height: 112px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   border: 2.5px solid #4a3a28;
@@ -132,13 +134,13 @@
 }
 
 /* --- 底部菜单 --- */
-.warm-dock-wrap { margin-top: auto; margin-bottom: 52px; }
+.warm-dock-wrap { margin-top: auto; margin-bottom: 48px; }
 .warm-dock {
   display: flex; align-items: center;
-  padding: 12px 22px;
+  padding: 12px 24px;
   background: #fffdf7;
   border: 2.5px solid #4a3a28;
-  border-radius: 22px;
+  border-radius: 24px;
   box-shadow: 5px 5px 0 rgba(74, 58, 40, 0.85);
 }
 .theme-warm .qd-label {

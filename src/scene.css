@@ -181,11 +181,12 @@
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
 }
 
-/* 全屏返回场景：左下角，与底部菜单栏垂直居中对齐（不遮 logo） */
+/* 全屏返回场景：左下角，左缘对齐品牌 logo 列、底缘与 Dock 底边同基线
+   默认值对齐 fusion（logo x=170 / dock 底距 50），其余风格用 --back-left/--back-bottom 覆盖 */
 .back-chip {
   position: absolute;
-  bottom: 74.5px;
-  left: 24px;
+  bottom: var(--back-bottom, 50px);
+  left: var(--back-left, 170px);
   z-index: 55;
   display: flex;
   align-items: center;

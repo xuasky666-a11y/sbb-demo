@@ -10,6 +10,8 @@
   --dock-exit: #d43a24;
   --dock-sep: rgba(23, 24, 26, 0.18);
   --dock-hover: rgba(23, 24, 26, 0.05);
+  --back-left: 140px;
+  --back-bottom: 64px;
 }
 
 .mini {
@@ -41,7 +43,7 @@
   display: block; border-radius: 8px;
 }
 .mini-brand-name { font-size: 20px; font-weight: 600; letter-spacing: 0.3em; }
-.mini-ver { font-size: 12px; color: #9a9890; letter-spacing: 0.14em; margin-left: 4px; }
+.mini-ver { font-size: 12px; color: #7c7a72; letter-spacing: 0.14em; margin-left: 4px; }
 .mini-cast {
   display: flex; align-items: baseline; gap: 14px;
   padding: 10px 0;
@@ -55,7 +57,7 @@
 .mini-cast:hover strong { color: #2440ff; }
 
 /* --- 时钟 --- */
-.mini-clock { margin-top: 92px; display: flex; flex-direction: column; align-items: center; }
+.mini-clock { margin-top: 96px; display: flex; flex-direction: column; align-items: center; }
 .mini-time {
   font-family: "SF Pro Display", "Helvetica Neue", system-ui;
   font-size: 218px; font-weight: 100; line-height: 1;
@@ -64,8 +66,8 @@
 }
 .mini-time span { color: #c9c7bf; margin: 0 4px; }
 .mini-date {
-  margin-top: 34px;
-  font-size: 17px; letter-spacing: 0.5em; color: #8b897f;
+  margin-top: 32px;
+  font-size: 16px; letter-spacing: 0.5em; color: #76746c;
 }
 
 /* --- 核心应用 --- */
@@ -78,7 +80,7 @@
 .mini-app {
   position: relative;
   width: 280px;
-  padding: 40px 0 44px;
+  padding: 40px 0 40px;
   display: flex; flex-direction: column; align-items: center; gap: 20px;
   color: #17181a;
   transition: background 0.25s;
@@ -88,10 +90,10 @@
 .mini-app:active { background: rgba(23, 24, 26, 0.05); }
 .mini-index {
   font-family: "SF Mono", "Menlo", monospace;
-  font-size: 12px; letter-spacing: 0.2em; color: #b3b1a8;
+  font-size: 12px; letter-spacing: 0.2em; color: #98968e;
 }
 .mini-app:hover .mini-index { color: #2440ff; }
-.mini-app-label { font-size: 19px; font-weight: 500; letter-spacing: 0.34em; text-indent: 0.34em; }
+.mini-app-label { font-size: 18px; font-weight: 500; letter-spacing: 0.34em; text-indent: 0.34em; }
 .mini-underline {
   position: absolute; left: 50%; bottom: -1px;
   width: 0; height: 2px;
@@ -103,6 +105,6 @@
 
 /* --- 底部菜单（减法·统一快捷栏） --- */
 .mini-dock {
-  margin-top: auto; margin-bottom: 66px;
+  margin-top: auto; margin-bottom: 64px;
   display: flex;
 }

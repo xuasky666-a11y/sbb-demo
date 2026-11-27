@@ -10,6 +10,8 @@
   --dock-exit: #ffffff;
   --dock-sep: rgba(255, 255, 255, 0.22);
   --dock-hover: rgba(255, 255, 255, 0.12);
+  --back-left: 130px;
+  --back-bottom: 48px;
 }
 
 .skeu {
@@ -36,7 +38,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 52px 130px 0;
+  padding: 48px 130px 0;
 }
 .skeu-brand { display: flex; align-items: center; gap: 18px; }
 .skeu-badge {
@@ -49,13 +51,13 @@
 }
 .skeu-brand-text { display: flex; flex-direction: column; gap: 3px; }
 .skeu-brand-text strong {
-  font-size: 29px; font-weight: 700; letter-spacing: 0.06em;
+  font-size: 28px; font-weight: 700; letter-spacing: 0.06em;
   color: #45413a;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 .skeu-brand-text em {
   font-style: normal; font-size: 14px; letter-spacing: 0.14em;
-  color: #9b958a;
+  color: #7a7468;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 .skeu-cast {
@@ -70,12 +72,12 @@
 }
 .skeu-cast:active { transform: scale(0.97); }
 .skeu-cast-label {
-  font-size: 16px; letter-spacing: 0.1em; color: #847e71;
+  font-size: 16px; letter-spacing: 0.1em; color: #6f6a5e;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 .skeu-lcd {
   font-family: "SF Mono", "Menlo", monospace;
-  font-size: 27px; font-weight: 700; letter-spacing: 0.22em;
+  font-size: 28px; font-weight: 700; letter-spacing: 0.22em;
   padding: 7px 16px 7px 20px;
   border-radius: 9px;
   color: #ffc76a;
@@ -89,7 +91,7 @@
 
 /* --- 翻页钟 --- */
 .skeu-clock { margin-top: 64px; display: flex; flex-direction: column; align-items: center; }
-.skeu-flips { display: flex; align-items: center; gap: 22px; }
+.skeu-flips { display: flex; align-items: center; gap: 24px; }
 .skeu-flip {
   position: relative;
   width: 172px; height: 208px;
@@ -124,25 +126,25 @@
 }
 .skeu-pin.pin-l { left: -4px; }
 .skeu-pin.pin-r { right: -4px; }
-.skeu-colon { display: flex; flex-direction: column; gap: 34px; }
+.skeu-colon { display: flex; flex-direction: column; gap: 32px; }
 .skeu-colon i {
   width: 16px; height: 16px; border-radius: 50%;
   background: linear-gradient(180deg, #5a5e66, #2c2e33);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 3px 6px rgba(70, 60, 40, 0.35);
 }
 .skeu-date {
-  margin-top: 30px;
+  margin-top: 32px;
   font-size: 24px; letter-spacing: 0.28em; font-weight: 500;
-  color: #8a8478;
+  color: #767065;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
 /* --- 核心应用 --- */
-.skeu-apps { margin-top: 78px; display: flex; gap: 110px; }
-.skeu-app { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.skeu-apps { margin-top: 80px; display: flex; gap: 112px; }
+.skeu-app { display: flex; flex-direction: column; align-items: center; gap: 24px; }
 .skeu-tile {
   width: 176px; height: 176px;
-  border-radius: 30px;
+  border-radius: 32px;
   display: flex; align-items: center; justify-content: center;
   background: linear-gradient(180deg, #fbfaf7 0%, #ece8df 60%, #ddd8cc 100%);
   box-shadow:
@@ -167,16 +169,16 @@
     0 6px 14px rgba(95, 85, 60, 0.2);
 }
 .skeu-app-label {
-  font-size: 23px; font-weight: 600; letter-spacing: 0.12em;
+  font-size: 24px; font-weight: 600; letter-spacing: 0.12em;
   color: #57534a;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
 /* --- 底部工具栏（深色压印金属·白图标） --- */
-.skeu-dock-wrap { margin-top: auto; margin-bottom: 52px; }
+.skeu-dock-wrap { margin-top: auto; margin-bottom: 48px; }
 .skeu-dock {
   display: flex; align-items: center;
-  padding: 12px 18px;
+  padding: 12px 20px;
   border-radius: 24px;
   background: linear-gradient(180deg, #4a4e55 0%, #33363c 55%, #26282c 100%);
   box-shadow:

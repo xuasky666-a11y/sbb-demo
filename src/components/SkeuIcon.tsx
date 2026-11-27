@@ -24,7 +24,7 @@ function Glyph({ name, deep }: { name: CoreName; deep: string }) {
       return (
         <g>
           <path d="M-20 20l3.5-12L12-20a7 7 0 0110 10L-6 16l-14 4z" fill="#fff" />
-          <path d="M8-16l10 10" stroke={deep} strokeWidth="4" strokeLinecap="round" opacity="0.5" />
+          <path d="M8-16l10 10" stroke={deep} strokeWidth="5" strokeLinecap="round" opacity="0.5" />
           <path d="M-20 20l3.5-12 8.5 8.5L-20 20z" fill={deep} opacity="0.65" />
         </g>
       )
@@ -32,8 +32,8 @@ function Glyph({ name, deep }: { name: CoreName; deep: string }) {
       return (
         <g>
           <rect x="-26" y="-24" width="52" height="36" rx="7" fill="#fff" />
-          <path d="M0 6v-18M-9-4l9-9 9 9" stroke={deep} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-          <path d="M-12 21h24" stroke="#fff" strokeWidth="6" strokeLinecap="round" />
+          <path d="M0 6v-18M-9-4l9-9 9 9" stroke={deep} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <path d="M-12 21h24" stroke="#fff" strokeWidth="5" strokeLinecap="round" />
         </g>
       )
     case 'live':

@@ -10,6 +10,8 @@
   --dock-exit: #a93420;
   --dock-sep: rgba(60, 66, 62, 0.3);
   --dock-hover: rgba(90, 96, 90, 0.1);
+  --back-left: 130px;
+  --back-bottom: 48px;
 }
 
 .ink {
@@ -55,45 +57,45 @@
 .ink-header {
   width: 100%;
   display: flex; justify-content: space-between; align-items: flex-start;
-  padding: 46px 130px 0;
+  padding: 48px 130px 0;
 }
 .ink-brand { display: flex; align-items: center; gap: 16px; }
 .ink-mark {
-  width: 54px; height: 54px;
+  width: 56px; height: 56px;
   border-radius: 50%;
   display: block;
   border: 2px solid rgba(60, 66, 62, 0.55);
   box-shadow: 0 4px 12px rgba(40, 46, 42, 0.25);
 }
 .ink-brand-text { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
-.ink-brand-name { font-size: 30px; font-weight: 700; letter-spacing: 0.2em; }
-.ink-ver { font-size: 13px; letter-spacing: 0.16em; opacity: 0.45; font-family: "Songti SC", serif; }
+.ink-brand-name { font-size: 32px; font-weight: 700; letter-spacing: 0.2em; }
+.ink-ver { font-size: 13px; letter-spacing: 0.16em; opacity: 0.65; font-family: "Songti SC", serif; }
 
 .ink-cast { display: flex; align-items: center; gap: 16px; }
 .ink-cast-label {
   writing-mode: vertical-rl;
-  font-size: 17px; letter-spacing: 0.3em;
-  color: rgba(60, 66, 62, 0.6);
+  font-size: 16px; letter-spacing: 0.3em;
+  color: rgba(60, 66, 62, 0.75);
 }
 .ink-seal {
-  width: 92px; height: 92px;
+  width: 96px; height: 96px;
   display: grid; grid-template-columns: 1fr 1fr; place-items: center;
   padding: 8px;
-  border-radius: 12px;
+  border-radius: 16px;
   background:
     radial-gradient(circle at 30% 26%, rgba(255, 255, 255, 0.22), transparent 55%),
     linear-gradient(160deg, #c8452c, #a93420);
   box-shadow: inset 0 0 0 3px rgba(246, 241, 227, 0.85), inset 0 0 0 5px rgba(169, 52, 32, 0.9), 0 6px 16px rgba(150, 50, 30, 0.35);
   color: #f6f1e3;
   font-family: "Songti SC", "STSong", serif;
-  font-size: 30px; font-weight: 700;
+  font-size: 32px; font-weight: 700;
   transform: rotate(2deg);
   transition: transform 0.25s var(--ease-out-soft);
 }
 .ink-cast:hover .ink-seal { transform: rotate(-2deg) scale(1.05); }
 
 /* --- 时钟 --- */
-.ink-clock { margin-top: 34px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.ink-clock { margin-top: 32px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
 .ink-time {
   font-family: "Songti SC", "STSong", "Kaiti SC", serif;
   font-size: 172px; font-weight: 700; line-height: 1;
@@ -103,13 +105,13 @@
   text-shadow: 0 2px 0 rgba(255, 255, 255, 0.5), 0 12px 28px rgba(60, 66, 62, 0.14);
 }
 .ink-colon { opacity: 0.45; margin: 0 8px; }
-.ink-date { font-size: 25px; letter-spacing: 0.3em; color: rgba(50, 56, 52, 0.72); }
+.ink-date { font-size: 24px; letter-spacing: 0.3em; color: rgba(50, 56, 52, 0.8); }
 
 /* --- 团扇应用 --- */
-.ink-apps { margin-top: 54px; display: flex; gap: 72px; }
-.ink-app { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.ink-apps { margin-top: 56px; display: flex; gap: 72px; }
+.ink-app { display: flex; flex-direction: column; align-items: center; gap: 16px; }
 .ink-fan {
-  width: 172px; height: 172px;
+  width: 176px; height: 176px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   color: #333935;
@@ -135,18 +137,18 @@
 .ink-app-label { font-size: 24px; font-weight: 700; letter-spacing: 0.24em; text-indent: 0.24em; }
 
 /* --- 卷轴快捷栏 --- */
-.ink-scroll-wrap { margin-top: auto; margin-bottom: 46px; }
+.ink-scroll-wrap { margin-top: auto; margin-bottom: 48px; }
 .ink-scroll { display: flex; align-items: center; }
 .ink-rod {
-  width: 22px; height: 118px;
-  border-radius: 11px;
+  width: 24px; height: 120px;
+  border-radius: 12px;
   background: linear-gradient(90deg, #6d4a2f, #8a6142 45%, #5a3c26);
   box-shadow: 0 6px 14px rgba(70, 50, 30, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.25);
 }
 .ink-scroll-paper {
   display: flex; align-items: center;
   height: 96px;
-  padding: 0 26px;
+  padding: 0 24px;
   background: linear-gradient(180deg, #fbf7ec, #f3edda);
   border-top: 1.5px solid rgba(90, 96, 90, 0.3);
   border-bottom: 1.5px solid rgba(90, 96, 90, 0.3);

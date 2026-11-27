@@ -15,7 +15,7 @@ function Glyph({ name }: { name: CoreName }) {
       return (
         <g>
           <rect x="-24" y="-22" width="48" height="34" rx="7" {...common} />
-          <path d="M-12 4v-8M0 4v-14M12 4v-5" {...common} strokeWidth={4.5} />
+          <path d="M-12 4v-8M0 4v-14M12 4v-5" {...common} />
           <path d="M-9 12l-4 8M9 12l4 8" {...common} />
         </g>
       )
@@ -23,14 +23,14 @@ function Glyph({ name }: { name: CoreName }) {
       return (
         <g>
           <path d="M-18 18l3-10L11-18a6.5 6.5 0 019 9L-5 15l-13 3z" {...common} />
-          <path d="M7-14l9 9" {...common} strokeWidth={4} opacity={0.7} />
+          <path d="M7-14l9 9" {...common} opacity={0.7} />
         </g>
       )
     case 'cast':
       return (
         <g>
           <rect x="-24" y="-22" width="48" height="34" rx="7" {...common} />
-          <path d="M0 4v-14M-7-3l7-7 7 7" {...common} strokeWidth={4.5} />
+          <path d="M0 4v-14M-7-3l7-7 7 7" {...common} />
           <path d="M-10 19h20" {...common} />
         </g>
       )

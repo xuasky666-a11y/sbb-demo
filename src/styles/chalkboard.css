@@ -10,6 +10,9 @@
   --dock-exit: #ffffff;
   --dock-sep: rgba(243, 241, 231, 0.4);
   --dock-hover: rgba(255, 255, 255, 0.09);
+  /* 板面 inset 26：品牌列 26+120=146，Dock 底距 26+48=74 */
+  --back-left: 146px;
+  --back-bottom: 74px;
 }
 
 /* 木框 */
@@ -75,16 +78,16 @@
 .chalk-header {
   width: 100%;
   display: flex; justify-content: space-between; align-items: flex-start;
-  padding: 44px 120px 0;
+  padding: 48px 120px 0;
 }
 .chalk-brand { display: flex; align-items: center; gap: 16px; opacity: 0.95; }
-.chalk-logo { height: 62px; width: auto; display: block; }
+.chalk-logo { height: 64px; width: auto; display: block; }
 .chalk-core { filter: url(#chalk-rough) saturate(0.9); }
 .chalk-cast {
   display: flex; align-items: center; gap: 16px;
-  padding: 12px 26px;
+  padding: 12px 24px;
   border: 2.5px dashed rgba(243, 241, 231, 0.75);
-  border-radius: 14px;
+  border-radius: 16px;
   font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
   font-size: 20px; letter-spacing: 0.14em;
   transition: background 0.2s;
@@ -97,7 +100,7 @@
 .chalk-cast:hover { background: rgba(255, 255, 255, 0.07); }
 
 /* --- 时钟 --- */
-.chalk-clock { margin-top: 42px; display: flex; flex-direction: column; align-items: center; }
+.chalk-clock { margin-top: 40px; display: flex; flex-direction: column; align-items: center; }
 .chalk-time {
   font-family: "Chalkboard SE", "Comic Sans MS", cursive;
   font-size: 158px; font-weight: 700; line-height: 1.05;
@@ -106,17 +109,17 @@
   opacity: 0.96;
 }
 .chalk-time span { opacity: 0.75; margin: 0 4px; }
-.chalk-underline { margin-top: 6px; opacity: 0.7; }
+.chalk-underline { margin-top: 8px; opacity: 0.7; }
 .chalk-date {
-  margin-top: 22px;
+  margin-top: 24px;
   font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
-  font-size: 27px; letter-spacing: 0.3em; opacity: 0.88;
+  font-size: 28px; letter-spacing: 0.3em; opacity: 0.88;
   text-shadow: 0 0 3px rgba(243, 241, 231, 0.4);
 }
 
 /* --- 核心应用 --- */
-.chalk-apps { margin-top: 58px; display: flex; gap: 92px; }
-.chalk-app { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.chalk-apps { margin-top: 56px; display: flex; gap: 96px; }
+.chalk-app { display: flex; flex-direction: column; align-items: center; gap: 16px; }
 .chalk-app.r0 { transform: rotate(-1.1deg); }
 .chalk-app.r1 { transform: rotate(0.7deg); }
 .chalk-app.r2 { transform: rotate(-0.5deg); }
@@ -124,7 +127,7 @@
 .chalk-app-box {
   width: 168px; height: 168px;
   border: 3px solid rgba(243, 241, 231, 0.85);
-  border-radius: 22px;
+  border-radius: 24px;
   display: flex; align-items: center; justify-content: center;
   transition: background 0.2s, transform 0.22s var(--ease-out-soft);
 }
@@ -132,7 +135,7 @@
 .chalk-app:active .chalk-app-box { transform: scale(0.95); }
 .chalk-app-label {
   font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
-  font-size: 26px; font-weight: 700; letter-spacing: 0.2em; text-indent: 0.2em;
+  font-size: 28px; font-weight: 700; letter-spacing: 0.2em; text-indent: 0.2em;
   text-shadow: 0 0 3px rgba(243, 241, 231, 0.45);
 }
 
@@ -147,10 +150,10 @@
 }
 
 /* --- 底部工具 --- */
-.chalk-dock-wrap { margin-top: auto; margin-bottom: 44px; }
+.chalk-dock-wrap { margin-top: auto; margin-bottom: 48px; }
 .chalk-dock {
   display: flex; align-items: center;
-  padding: 12px 26px;
+  padding: 12px 24px;
   border: 2.5px solid rgba(243, 241, 231, 0.7);
   border-radius: 999px;
 }

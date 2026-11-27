@@ -25,7 +25,7 @@ function Art({ name, c }: { name: CoreName; c: { light: string; base: string; da
         <g>
           <path d="M34 86l5-16 32-32a10 10 0 0114 14L53 84l-19 2z" fill={body} />
           <path d="M34 86l5-16 11 11-16 5z" fill={c.dark} opacity={0.7} />
-          <path d="M66 44l12 12" stroke="#fff" strokeWidth="5" strokeLinecap="round" opacity={0.6} />
+          <path d="M66 44l12 12" stroke="#fff" strokeWidth="6" strokeLinecap="round" opacity={0.6} />
           <ellipse cx="72" cy="40" rx="9" ry="5" fill="#fff" opacity={0.45} transform="rotate(-45 72 40)" />
         </g>
       )
@@ -33,7 +33,7 @@ function Art({ name, c }: { name: CoreName; c: { light: string; base: string; da
       return (
         <g>
           <rect x="24" y="26" width="72" height="52" rx="16" fill={body} />
-          <path d="M60 66V44M50 53l10-10 10 10" stroke="#fff" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity={0.95} />
+          <path d="M60 66V44M50 53l10-10 10 10" stroke="#fff" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity={0.95} />
           <rect x="50" y="80" width="20" height="12" rx="6" fill={c.dark} />
           <ellipse cx="44" cy="36" rx="12" ry="6" fill="#fff" opacity={0.4} />
         </g>
