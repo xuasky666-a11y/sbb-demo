@@ -5,7 +5,7 @@ import { useClock } from '@/lib/useClock'
 import { CORE_APPS, type ScreenProps } from './types'
 import './chalkboard.css'
 
-/** 风格四 · 超写实黑板：木框、粉笔字、粉笔槽与板擦 */
+/** 超写实黑板：底部木框、粉笔字与右下角板擦 */
 export function Chalkboard({ onAction }: ScreenProps) {
   const { hh, mm, date, week } = useClock()
 
@@ -37,9 +37,6 @@ export function Chalkboard({ onAction }: ScreenProps) {
 
         <section className="chalk-clock">
           <div className="chalk-time">{hh}<span>:</span>{mm}</div>
-          <svg className="chalk-underline chalk-rough" viewBox="0 0 420 14" width="420" height="14">
-            <path d="M6 8c70-5 140 4 208-1s130-3 200 2" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" />
-          </svg>
           <div className="chalk-date">{date}&ensp;{week}</div>
         </section>
 
@@ -75,11 +72,8 @@ export function Chalkboard({ onAction }: ScreenProps) {
         </footer>
       </div>
 
-      {/* 粉笔槽 */}
-      <div className="chalk-tray">
-        <i className="chalk-stick white" /><i className="chalk-stick pink" /><i className="chalk-stick yellow" />
-        <i className="chalk-eraser" />
-      </div>
+      {/* 板擦：搁在右下角的底部木框上 */}
+      <i className="chalk-eraser" />
     </div>
   )
 }
